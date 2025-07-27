@@ -1,0 +1,20 @@
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.col {
+    float: left;
+    width: 50%;
+    height: 270px;
+    padding: 0 !important;
+}
+.t9{
+    outline: none;
+    margin: 0px;
+    position: absolute;
+    width: 75px;
+    height: 10px;
+    background-color: #32373a;
+    z-index: 666;
+}

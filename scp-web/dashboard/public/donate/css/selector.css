@@ -1,0 +1,56 @@
+.select_don {
+    width: 40%;
+    min-height: 45px;
+    background-color: #24242448;
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform:translateX(-50%);
+    box-shadow: -5px 3px 20px 7px #3a85da33, 5px -3px 30px 7px #a02bff33;
+    backdrop-filter: blur(12px);
+    z-index: 6;
+} .select_don a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    transition: 0.6s;
+} .select_don a:hover {
+    background-color: #85858559;
+    padding: 4px 10px;
+    border-radius: 30px;
+} .select_don a:nth-child(1):hover {
+    color: deepskyblue;
+} .select_don a:nth-child(2):hover {
+    color: fuchsia;
+} .select_don a:nth-child(3):hover {
+    color: #00ff9d;
+} .select_don a:nth-child(4):hover {
+    color: #ffd000;
+}
+
+@media only screen and (max-width: 960px) {
+    .select_don {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px 0px;
+        min-height: 140px;
+        min-width: 205px;
+    }
+    ::-webkit-scrollbar{height: 6px;width: 10px}
+}
+
+@media only screen and (min-width: 961px) and (max-width: 1530px) {
+    .select_don {
+        width: 80%;
+    }
+    ::-webkit-scrollbar{height: 6px;width: 10px}
+}

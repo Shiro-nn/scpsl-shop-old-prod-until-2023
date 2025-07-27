@@ -1,0 +1,73 @@
+.cm1{
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: none!important;
+pointer-events: none;
+z-index: 50;
+}
+.cm2{
+position: absolute;
+pointer-events: auto;
+}
+.cm3{
+min-width: 188px;
+max-width: 320px;
+position: relative;
+box-sizing: border-box;
+display: flex;
+height: auto;
+max-height: calc(100vh - 32px);
+-webkit-box-shadow: 0 8px 16px rgb(0 0 0 / 24%);
+box-shadow: 0 8px 16px rgb(0 0 0 / 24%);
+background: #18191c;
+border-radius: 4px;
+}
+.cm4{
+padding: 6px 8px;
+position: relative;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+min-height: 0;
+-webkit-box-flex: 1;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+}
+.cm5{
+color: rgba(255,255,255,0.7);
+transition: all .15s ease-in-out;
+border-color: #b9bbbe;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+display: flex;
+-webkit-box-pack: justify;
+-ms-flex-pack: justify;
+justify-content: space-between;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+min-height: 32px;
+padding: 6px 8px;
+position: relative;
+margin: 2px 0;
+border-radius: 2px;
+font-size: 14px;
+font-weight: 500;
+line-height: 18px;
+}
+.cm5:hover{
+background: rgba(143, 143, 143, 0.342);
+}
+.cm5, .cm5 *{
+cursor: url(/cursors/red/pointer.cur), pointer;
+}
+.cm6{
+-webkit-box-flex: 1;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}

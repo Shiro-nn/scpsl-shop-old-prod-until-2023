@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+    <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Сборка админки', metaDesc:'Сборка админки'}) %>
+
+    <link rel="stylesheet" href="/css/donate/ra_three.css">
+    <link rel="stylesheet" href="/css/donate/ra_two.css">
+    <link rel="stylesheet" href="/css/etc/rainbow.css">
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/colors.min.css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body style="padding-bottom: 10px;">
+        <%- include('../modules/socketInit') %>
+        <div id="wrapper">
+            <link href="/css/donate/ra.css" rel="stylesheet" type="text/css">
+            <%- include('../modules/header') %>
+            <%- include('./selector.ejs') %>
+            <!--<%- include('../modules/promo_alert.ejs') %>-->
+            <div class="content">
+                <div class="content-page ml-0" style="margin-top: 140px;">
+                    <div class="content">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="blurstyle">
+                                    <div id="blur_style"></div>
+                                    <div id="blur_loader" style="display: none;"></div>
+                                    <div align="center" id="antiblur" style="display: none;"><span class="loader-11"> </span><p id="abp">Ваш запрос обрабатывается</p></div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="ra">
+                                        <div class="ra_panel js_pos_check">
+                                            <a class="a_ra open_ra">Открыть RemoteAdmin<br>Стоимость: 25₽<br>(В игре на m)</a>
+                                            <div id="blur"></div>
+                                            <div id="ra_blur">
+                                                <div id="ra_give_img" style="filter: blur(4px); display: none;">
+                                                    <h3>Выдача предметов</h3>
+                                                    <p class="ra_text">Выберите игроков из списка, затем выберите тип предмета и подтвердите свое решение.</p>
+                                                    <img src="/img/ra/ra-give.png" width="635px">
+                                                </div>
+                                                <div id="ra_force_img" style="filter: blur(4px); display: none;">
+                                                    <h3>Force class</h3>
+                                                    <p class="ra_text">Выберите игроков из списка, затем выберите роль и подтвердите свое решение.</p>
+                                                    <img src="/img/ra/ra-force.png" width="635px">
+                                                </div>
+                                                <img id="ra_effects_img" src="/img/ra/ra-effects.png" width="668px" style="filter: blur(4px); display: none;">
+                                                <a class="a_ra" id="ra_give_open" style="display: none;">Открыть Give Item<br>Стоимость: 100₽</a>
+                                                <a class="a_ra" id="ra_force_open" style="display: none;">Открыть Force class<br>Стоимость: 100₽</a>
+                                                <a class="a_ra" id="ra_effects_open" style="display: none;">Открыть Эффекты<br>Стоимость: 200₽</a>
+                                                <h1 class="a_ra" id="ra_sum" style="z-index: 13;top: 530px; left: 10px;">Стоимость: 0₽</h1>
+                                                <a class="a_ra ra_active" style="z-index: 10;top: 44px; left: 302px;" id="ra_welcome">Welcome</a>
+                                                <a class="a_ra ra_block" style="z-index: 10;top: 83px; left: 274px;">Player spec. info</a>
+                                                <a class="a_ra ra_block" style="z-index: 10;top: 120px; left: 304px;">Kick/Ban</a>
+                                                <a class="a_ra ra_unblock" style="z-index: 10;top: 157px; left: 297px;" id="ra_force">Forceclass</a>
+                                                <a class="a_ra ra_unblock" style="z-index: 10;top: 195px; left: 302px;" id="ra_give">Give Item</a>
+                                                <a class="a_ra ra_block" style="z-index: 10;top: 233px; left: 290px;">Admin Tools</a>
+                                                <a class="a_ra ra_block" style="z-index: 10;top: 271px; left: 261px;">Doors management</a>
+                                                <a class="a_ra ra_unblock" style="z-index: 10;top: 309px; left: 282px;" id="ra_effects">Status effects</a>
+                                                <a class="a_ra ra_block" style="z-index: 10;top: 346px; left: 284px;">Players mgmt</a>
+                                                <a class="a_ra ra_block" style="z-index: 10;top: 384px; left: 284px;">Server Events</a>
+                                                <a class="a_ra ra_block" style="z-index: 10;top: 422px; left: 280px;">Server Configs</a>
+                                                <a class="a_ra ra_block" style="z-index: 10;top: 460px; left: 282px;">Spawn Tickets</a>
+                                                <a class="a_ra ra_buy" id="buy_ra_click">Приобрести</a>
+                                                <div class="ra_welcome">
+                                                    <h3>Добро пожаловать!</h3>
+                                                    <p class="ra_text">Представляем вам вторую версию Remote Admin - идеального инструмента управления SCP-сервером!
+                                                        Он позволяет отправлять серверные запросы с помощью удобного интерфейса.</p>
+                                                    <h3 class="ra_welcome_h3">Как им пользоваться?</h3>
+                                                    <p class="ra_text">1. Выберите команду, которую вы хотите выполнить.</p>
+                                                    <p class="ra_text">2. Внимательно прочитайте описание, чтобы убедиться в его работе<zz class="ra_text">(иногда его трудно отменить!)</zz></p>
+                                                    <p class="ra_text">3. Отрегулируйте параметры и, по желанию, выберите игроков, на которых это должно
+                                                        оказать влияние. Совет: удерживайте зажатую клавишу CTRL, чтобы выбрать несколько игроков.</p>
+                                                    <p class="ra_text">4. Подтвердите запрос.</p>
+                                                    <h3 class="ra_welcome_h3">Давайте начнем!</h3>
+                                                    <p class="ra_text">Теперь вы готовы начать пользоваться админ-панелью. Получайте удовольствие!</p>
+                                                </div>
+                                                <div class="ra_players">
+                                                    <a class="a_ra" id="ra_players_open">Открыть просмотр игроков<br>Стоимость: 50₽</a>
+                                                    <div id="ra_players_blur"></div>
+                                                    <div id="players_pos"></div>
+                                                    <p class="ra_text username"><h9 id="ra_color"><input id="ra_color_input" type="color" value="#ffdd00">[<input id="ra_input_text" type="text" maxlength="10" onkeydown="ra_input_update(this)" value="Donater" style="width: 70px;">]</h9> (2) <qq id="ra.get.username"></qq></p>
+                                                    <p class="ra_text" id="ra_players_role">(7) Loхotron</p>
+                                                    <p class="ra_text" id="ra_players_role">(12) Safondanila</p>
+                                                    <p class="ra_text" id="ra_players_role">(13) хазбик#fydne</p>
+                                                    <p class="ra_text" id="ra_players_role">(15) ismailmasilik</p>
+                                                    <p class="ra_text" id="ra_players_role">(16) Кайошы #fydne</p>
+                                                    <p class="ra_text" id="ra_players_role">(17) кто-то #fydne</p>
+                                                    <p class="ra_text" id="ra_players_role">(19) #fydne ДЛАНЬ ЗМЕИ</p>
+                                                    <p class="ra_text" id="ra_players_role">(20) картошка</p>
+                                                    <p class="ra_text" id="ra_players_role">(21) Иллюзия Песка</p>
+                                                    <p class="ra_text" id="ra_players_role">(22) Зов #fydne</p>
+                                                    <p class="ra_text" id="ra_players_role">(23) лионез</p>
+                                                    <p class="ra_text" id="ra_players_role">(25) venfuk #fydne</p>
+                                                    <p class="ra_text" id="ra_players_role">(26) Sova #fydne</p>
+                                                    <p class="ra_text" id="ra_players_role">(28) Этот ваш Dzeta</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display: none;" class="modal fade bs-example-modal-center show donate_rules donate_overflow" id="buy_ra">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header mb-0">
+                                                        <h4 class="modal-title">Покупка RA</h4>
+                                                        <i class="fa-solid fa-close pointer" aria-hidden="true" id="buy_ra_close"></i>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-12 mb-2">
+                                                                <div class="ra_server" style="width:200px;">
+                                                                    <select id="ra_server" name="server">
+                                                                        <option disabled selected>Выберите сервер</option>
+                                                                        <% servers.filter(x => x.id != 8).forEach(server => { %>
+                                                                        <option value='<%= server.id %>'><%= server.name %></option>
+                                                                        <% }); %>
+                                                                    </select>
+                                                                </div>
+                                                                <input class="promo_input" name="promo" value="" placeholder="Промокод(если имеется)" autocomplete="off">
+                                                                <i class="fa-solid fa-close" id="promo_status" aria-hidden="true"></i>
+                                                                <br><p class="ra_text">С вашего баланса будет списано <h9 class="ra_text" id="ra_buy_sum">0</h9>₽</p>
+                                                                <p class="ra_text">Привилегия выдается на месяц.</p>
+                                                                <p class="ra_text">Скидка от промокода: <h9 id="promo_sum">0</h9>%</p>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <button id="ra_buy_button" class="btn btn-bordred-success mt-1 mb-2">Приобрести</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%- include('../modules/invite') %>
+        </div>
+        <script src="/js/modules/load-style.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/colors.min.js"></script>
+        <script src="/js/donate/ra.js"></script>
+        <script src="/js/etc/selector.js"></script>
+		<script src="/js/modules/steam-alert.js"></script>
+    </body>
+</html>

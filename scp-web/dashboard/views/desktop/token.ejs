@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html style="background-color: #161b2d;">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="<%=cdn%>/fonts/Nunito/style.css">
+<link rel="stylesheet" href="/css/desktop/loading.css">
+</head>
+<body>
+<div class="content">
+    <div class="loader"></div>
+    <h1></h1>
+</div>
+<script>
+(async() => {
+const res = await fetch('/auth/desktop', {method:'POST'});
+const json = await res.json();
+if(json.error) return document.querySelector('h1').innerHTML = json.message;
+window.location = 'fydne://token/'+json.token;
+setTimeout(function() {
+    window.location = '/app';
+}, 500);
+})()
+</script>
+</body>
+</html>

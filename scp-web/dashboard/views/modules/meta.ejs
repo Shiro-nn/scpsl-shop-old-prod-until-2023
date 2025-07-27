@@ -1,0 +1,20 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="<%= metaDesc %>">
+<meta name="author" content="fydne">
+<meta name="keywords" content="scpsl store, store scpsl, scp:sl, SCP: Secret Laboratory">
+<title><%= metaTitle %></title>
+
+<link rel="icon" type="image/ico" href="<%= cdn_host %>/scpsl/img/etc/fydne.png" />
+
+<script type="module" src="/js/all.js"></script>
+
+<% _e_i = `${cdn_host}/scpsl/img/etc/fydne.png`; try{if(embedImg != '') _e_i = embedImg}catch{} %>
+<meta property="og:title" content="<%= embedName %>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scpsl.shop" />
+<meta property="og:image" content="<%= _e_i %>" />
+<meta property="og:description" content="<%= metaDesc %>" />
+<meta name="theme-color" content="<%try{%><%=color%><%}catch{%>#ff0000<%}%>">
+<%try{if(embedBig){%><meta name="twitter:card" content="summary_large_image"><%}}catch{}%>

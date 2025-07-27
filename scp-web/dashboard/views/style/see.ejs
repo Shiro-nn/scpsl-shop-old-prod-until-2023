@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:`fydne > Стиль '${sdata.name}'`, metaTitle:`fydne | Стиль '${sdata.name}'`, metaDesc:sdata.desc, embedImg:sdata.imgs[0], embedBig:true}) %>
+        <script defer="" src="<%= cdn_host %>/scpsl/js/see-style.js"></script>
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/card.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/custom_style_get.css?style=<%= sdata.link %>&fix=.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <script>const style_owner = parseInt('<%=sdata.author%>');</script>
+        <%- include('../modules/socketInit') %>
+        <%- include('../modules/header') %><br>
+        <div class="container">
+            <div class="page item wrapper wrapper--content">
+                <div class="page__sidebar">
+                    <section class="page__section">
+                        <a href="#" class="btn btn--ico-l btn--accent btn--long btn--mb" onclick="localStorage.removeItem('custom-style'); location.href='/style/add/<%= sdata.link %>';"><i class="fa-solid fa-download"></i>Установить</a>
+                        <a href="/style/edit/<%= sdata.link %>" class="btn btn--ico-l btn--green btn--long btn--mb" id="style.edit.button" style="display: none;"><i class="fa-solid fa-gear"></i>Изменить</a>
+                    </section>
+                    <section class="page__section">
+                        <header class="page__section-header">Создан:</header>
+                        <div class="item__dev">
+                            <div class="item__dev-avatar style_avatar" id="@<%= sdata.author %>"></div>
+                            <span class="item__dev-name style_username" id="@<%= sdata.author %>">@<%= sdata.author %></span>
+                        </div>
+                    </section>
+                </div>
+                <div class="page__content tab-active" data-tab="container">
+                    <header class="item__header">
+                        <div class="item__header-top">
+                            <h1 class="item__name"><%= sdata.name %></h1>
+                            <div class="item__stats">
+                                <span class="card__stat" aria-label="<%= sdata.use %> установили" data-balloon-pos="up">
+                                    <i class="fa-solid fa-download"></i> <%= sdata.use %>
+                                </span>
+                                <span class="card__stat" aria-label="<%= sdata.views %> просмотров" data-balloon-pos="up">
+                                    <i class="fa-solid fa-eye"></i> <%= sdata.views %>
+                                </span>
+                                <% if(sdata.official) { %>
+                                <span class="card__stat card__stat--green" aria-label="Официальный стиль" data-balloon-pos="up-right">
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                                <% } %>
+                            </div>
+                        </div>
+                        <p class="item__desc md_change"><%= sdata.desc %></p>
+                    </header>
+                    <div class="gallery">
+                        <% { %>
+                            <% let img = sdata.imgs[0]; %>
+                            <% let srch = false; %>
+                            <% if(img === ''){ %>
+                                <% sdata.imgs.forEach(async function(img2) { %>
+                                    <% if(img2 !== ''){ %>
+                                        <% if(!srch){ %>
+                                            <% img = img2; %>
+                                            <% srch = true; %>
+                                        <% } %>
+                                    <% } %>
+                                <% }); %>
+                            <% } %>
+                            <div class="gallery__main">
+                                <img class="gallery__main-img" src="<%= img %>">
+                                <div class="gallery__info">
+                                    <p class="gallery__info-text"></p>
+                                    <a class="gallery__info-link" href="<%= img %>" target="_blank"><i class="fa-solid fa-eye"></i>Посмотреть детально</a>
+                                </div>
+                            </div>
+                        <% } %>
+                        <div class="gallery__thumbnails">
+                        <% sdata.imgs.forEach(async function(img) { %>
+                            <% if(img === sdata.imgs[0]){ %>
+                                <% if(img !== ''){ %>
+                                    <div class="gallery__thumbnail gallery__thumbnail--active">
+                                        <img class="gallery__thumbnail-img" src="<%= img %>" alt="">
+                                        <small class="gallery__thumbnail-text"></small>
+                                    </div>
+                                <% } %>
+                            <% }else{ %>
+                                <% if(img !== ''){ %>
+                                    <div class="gallery__thumbnail">
+                                        <img class="gallery__thumbnail-img" src="<%= img %>" alt="">
+                                        <small class="gallery__thumbnail-text"></small>
+                                    </div>
+                                <% } %>
+                            <% } %>
+                        <% }); %>
+                    </div>
+                </div>
+                <div class="comments">
+                    <header class="comments__header">
+                        <h3 class="comments__h3">Комментарии
+                            <span class="comments__counter">(<%= sdata.comments.length %>)</span>
+                        </h3>
+                    </header>
+                    <p id="style.not.loged"><a href="/login?redirect=style/see/<%= sdata.link %>">Авторизуйтесь</a>, чтобы оставить комментарий</p>
+                    <mod id="style.comment" style="display: none;">
+                        <form role="form" method="post">
+                            <div class="col-12 mb-2">
+                                <input style="display:none" name="comment" value="comment">
+                                <textarea type="text" name="description" class="form-control" placeholder="комментарий"></textarea>
+                            </div>
+                            <br>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-bordred-success mt-1 mb-2">Отправить</button>
+                            </div>
+                        </form>
+                        <br>
+                    </mod>
+                    <div class="comments-container allow-pins">
+                        
+                        <% sdata.comments.reverse().forEach(async function(comment) { %>
+                        <div class="comment">
+                            <div class="comment__inner">
+                                <div class="comment__user">
+                                    <div class="comment__user-img p style_avatar" id="@<%= comment.userid %>"></div>
+                                </div>
+                                <div class="comment__content">
+                                    <header class="comment__header">
+                                        <div class="comment__info">
+                                            <div class="comment__info-inner">
+                                                <p class="comment__info-user p style_username" id="@<%= comment.userid %>"><%= comment.userid %></p>
+                                                <time class="comment__time"><%= comment.time %></time>
+                                            </div>
+                                        </div>
+                                    </header>
+                                    <main class="comment__body">
+                                        <div class="markdown-body">
+                                            <p class="md_change"><%= comment.desc %></p>
+                                        </div>
+                                    </main>
+                                </div>
+                            </div>
+                            <div class="comment__btns">
+                                
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../modules/invite') %>
+    <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+    <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+    <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+    <script src="<%= cdn_host %>/scpsl/js/md.js"></script>
+    <script src="<%= cdn_host %>/scpsl/js/autogrow-textarea.js"></script>
+    <script src="/js/etc/date-to-text.js"></script>
+    <script src="/js/etc/md.js"></script>
+    <script src="/js/etc/style.js"></script>
+    <%- include('../modules/profile') %>
+    </body>
+</html>

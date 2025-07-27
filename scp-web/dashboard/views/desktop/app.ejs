@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html style="background-color: #161b2d;">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne | Приложение', metaTitle:'fydne | Приложение', metaDesc:'Опробуйте приложение для ПК. Новые функции, больше возможностей.'}) %>
+        <link rel="stylesheet" href="<%=cdn_host%>/scpsl/fonts/Nunito/style.css">
+    </head>
+    <body>
+        <%- include('../modules/socketInit') %>
+<style>
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+::-webkit-scrollbar{
+    height: 7px;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 99px;
+    background: transparent;
+    box-shadow: 0px 0px 0px 100000vh #161b2d;
+}
+::-webkit-scrollbar-track{
+    background:  linear-gradient(0deg, #ff2323 0%, #d445ff 100%);
+}
+::-moz-selection{
+    color:#be1c6d;
+    background:#00000040;
+    border-radius:15px;
+}
+::selection{
+    color:#be1c6d;
+    background: #00000040;
+}
+body{
+    margin: 0;
+    position: relative;
+    display: flex;
+    font-family: 'Nunito', sans-serif;
+}
+@media (min-width: 576px){
+#render {
+    max-width: 540px;
+}}
+@media (min-width: 768px){
+#render {
+    max-width: 720px;
+}}
+@media (min-width: 992px){
+#render {
+    max-width: 960px;
+}}
+@media (min-width: 1200px){
+#render {
+    max-width: 1040px;
+}}
+@media (min-width: 1500px){
+#render {
+    max-width: 1570px;
+}}
+#render{
+    position: relative;
+    display: flex;
+    margin: 150px auto;
+    width: 100%;
+    justify-items: center;
+    justify-content: center;
+}
+.preview{
+    display: grid;
+    width: 100%;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, minmax(400px, 1fr));
+}
+.preview .preimage{
+    width: 80%;
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+}
+.preview img{
+    width: 100%;
+    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(15deg) rotateY(-36deg) rotateZ(5deg) translateX(0px) translateY(0px) translateZ(0px) skewX(1deg) skewY(0deg);
+    box-shadow: -12px 4px 100px 0px #da3a8a33, 11px -6px 100px #2ba0ff33;
+    border-radius: 5px;
+    user-select: none;
+}
+.preview .pretext{
+    width: 100%;
+    padding: min(10px, 1vw) min(50px, 5vw);
+}
+.preview h1{
+    background-color: #ce54f3;
+    background-image: linear-gradient(155deg, #ff2323, #d445ff);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.preview span{
+    color: #abbcd5;
+    padding: 10px;
+}
+</style>
+        <div id="render">
+            <div class="preview">
+                <div class="pretext">
+                    <h1>Настольное приложение</h1>
+                    <span>123</span>
+                </div>
+                <div class="preimage">
+                    <img src="/bin/app/app.png">
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>

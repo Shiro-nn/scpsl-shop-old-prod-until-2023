@@ -1,0 +1,115 @@
+input[type="range"]{
+    cursor: url(/cursors/red/pointer.cur), auto;
+}
+.txt, .txt * {
+  cursor: url(/cursors/red/select.cur), auto !important;
+}
+.modal-title{
+    font-family: NeonOL;
+}
+.pos_panel{
+    overflow-x: auto;
+    position: relative;
+    background-color: #111111;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 1100px;
+    height: 570px;
+}
+.pos_panel{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.r1{
+    position: absolute;
+    left: 900px;
+    height: 570px;
+    width: 4px;
+    background-color: #777777;
+}
+.r2{
+    z-index: 11;
+}
+.r3{
+    background-color: transparent;
+    -webkit-box-direction: normal;
+    box-sizing: border-box;
+    position: absolute;
+    font-weight: 600;
+    font-size: 25px;
+    z-index: 10;
+    text-align: center;
+    width: 196px;
+}
+.r4{
+    background-color: transparent;
+    -webkit-box-direction: normal;
+    box-sizing: border-box;
+    position: absolute;
+    max-height: 500px;
+}
+.r5{
+    z-index: 13;
+    top: 500px;
+    left: 907px;
+    font-size: 17px;
+    text-align: left;
+    width: auto;
+}
+.r6{
+    z-index: 13;
+    top: 520px;
+    left: 907px;
+    font-size: 18px;
+    text-align: left;
+    width: auto;
+}
+.r7{
+    height: 570px!important;
+    min-height: 570px!important;
+    right: 200px;
+    transform: scale(-1, 1);
+}
+.r8{
+    border-bottom-right-radius: 5%;
+    border-top-right-radius: 5%;
+}
+.r9{
+    font-size: 35px;
+    top: 130px;
+    left: 530px;
+    width: 370px;
+    text-align: center;
+}
+.r10 h1{
+    font-size: 18px;
+}
+.r11{
+    display: flex;
+    margin: auto;
+}
+.r12{
+    padding: 10px 25px;
+}
+.r13{
+    width: 155px;
+    font-size: 18px;
+    display: inline-block;
+    border: solid rgb(130, 134, 145);
+    color: #f7f7f7;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+.r13, .r13 *{cursor: url(/cursors/red/pointer.cur), pointer;}
+.r13.selected{
+    background-color: rgba(0, 0, 0, 0.5);
+    border: solid rgb(153, 230, 178);
+}
+.r14{
+    font-weight: 500 !important;
+    font-size: 14px;
+    cursor: url(/cursors/red/help.cur), help;
+}

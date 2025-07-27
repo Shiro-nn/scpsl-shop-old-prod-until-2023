@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru" style="background-color: #0D1117">
+<head>
+<%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Приглашение в клан', metaDesc:'Идет обработка приглашения...'}) %>
+</head>
+<body id="clans.inv">
+<script>const code = '<%=code%>';</script>
+<%- include('../modules/socketInit') %>
+<module id="window.loader">
+<link rel="stylesheet" href="/css/clans/clan/loader.css">
+<div class="spinner"></div>
+</module>
+<script src="/js/clans/invite.js"></script>
+</body>

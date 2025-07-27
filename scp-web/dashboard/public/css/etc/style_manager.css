@@ -1,0 +1,9 @@
+#editor {
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 500px !important;
+}
+.ace_content{cursor: url(/cursors/red/select.cur), text !important;}

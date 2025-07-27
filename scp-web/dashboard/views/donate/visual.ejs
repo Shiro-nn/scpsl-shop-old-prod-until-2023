@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="importmap">
+		{
+			"imports": {
+				"three": "https://cdn.scpsl.shop/three.js/build/three.module.js"
+			}
+		}
+		</script>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Визуал', metaDesc:'Визуал'}) %>
+        <%- include('../modules/socketInit') %>
+        
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/donate/visual.css">
+		
+		<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+		<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/fonts.css">
+	</head>
+	<body>
+		<div class="w">
+			<%- include('../modules/header') %>
+            <%- include('./selector.ejs') %>
+			<div class="m0">
+				<div class="m1">
+					<div class="m2">
+						<div class="m3">
+							<h4 class="m4">Визуал</h4>
+						</div>
+						<div class="m5">
+							<div class="m12"id="loaderProgress">
+								<div class="m13"><hr class="m14"></hr></div>
+							</div>
+							<div class="m6" id="render"></div>
+							<div class="m8"></div>
+							<div class="m7">
+                                <div class="m24" id="vis.loadData"><div class="m25"></div></div>
+                                <div class="m19">
+                                    <div class="m9" id="visual.nimb">
+                                        <div class="m10" style="background-image: url('/img/visual/images/nimb.png');"></div>
+                                        <span class="m11">Нимб</span>
+                                        <span class="fa-solid fa-info-circle m18"></span>
+                                        <span class="m22"><span class="fa-solid fa-plus"></span></span>
+                                        <span class="m27"><span class="fa-solid fa-eraser"></span></span>
+                                        <span class="m23">99₽</span>
+                                    </div>
+                                    <div class="m9" id="visual.light">
+                                        <div class="m10" style="background-image: url('/img/visual/images/light.png'); border-radius: 50%"></div>
+                                        <span class="m11">Свечение</span>
+                                        <span class="fa-solid fa-info-circle m18"></span>
+                                        <span class="m22"><span class="fa-solid fa-plus"></span></span>
+                                        <span class="m27"><span class="fa-solid fa-eraser"></span></span>
+                                        <span class="m23">75₽</span>
+                                        <input id="visual.color" class="m26" type="color" value="#ff0000">
+                                    </div>
+                                    <div class="m9" id="visual.doctor" style="display: none;">
+                                        <div class="m10" style="background-image: url('/img/visual/images/medkit.png');"></div>
+                                        <span class="m11">Лекарь</span>
+                                        <span class="fa-solid fa-info-circle m18"></span>
+                                        <span class="m22"><span class="fa-solid fa-plus"></span></span>
+                                        <span class="m27"><span class="fa-solid fa-eraser"></span></span>
+                                        <span class="m23">399₽</span>
+                                    </div>
+                                    <div class="m9" id="visual.flasher" style="display: none;">
+                                        <div class="m10" style="background-image: url('/img/visual/images/grenflash.png');"></div>
+                                        <span class="m11">Ослепитель</span>
+                                        <span class="fa-solid fa-info-circle m18"></span>
+                                        <span class="m22"><span class="fa-solid fa-plus"></span></span>
+                                        <span class="m27"><span class="fa-solid fa-eraser"></span></span>
+                                        <span class="m23">599₽</span>
+                                    </div>
+                                </div>
+                                <div class="m20">
+                                    <label class="m21">Стоимость: <sum id="vis.sum">0</sum>₽/мес</label>
+                                    <label class="m21">Истекает: <exp id="vis.exp">Не приобретен</exp></label>
+                                    <button class="visual.buy m666">Приобрести</button>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <script src="/js/modules/load-style.js"></script>
+        <%- include('../modules/invite') %>
+		<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.scale.css"/>
+		<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.perspective.css"/>
+		<script src="<%= cdn_host %>/scpsl/js/popper.min.js"></script>
+		<script src="<%= cdn_host %>/scpsl/js/tippy-bundle.umd.js"></script>
+		<script src="/js/logger.js"></script>
+		<script type="module" src="/js/donate/visual.js"></script>
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/colors.min.css">
+        <script src="<%= cdn_host %>/scpsl/js/colors.min.js"></script>
+		<script src="/js/modules/steam-alert.js"></script>
+	</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Обмен монет', metaDesc:'Обмен монет'}) %>
+        <link rel="stylesheet" href="/css/donate/trade.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <!--<link rel="stylesheet" href="/css/custom_style.css?fix=.css">-->
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body>
+        <%- include('../modules/socketInit') %>
+        <%- include('../modules/header') %>
+<style>
+.t0{
+    position: relative;
+    max-width: 100vw;
+    min-height: 100vh;
+}
+.t1 {
+    padding-top: 72px;
+    position: relative;
+    z-index: 10;
+}
+@media screen and (max-width: 910px){
+    .t2{
+        padding-bottom: 120px;
+        min-height: calc( 100vh - 120px );
+
+    }
+}
+.t3{
+    background-position: center top;
+}
+@media screen and (max-width: 910px){.t3 {padding-bottom: 0;}}
+.t4{
+    width: 949px;
+    text-align: left;
+    margin: 0 auto;
+}
+@media screen and (max-width: 910px){
+    .t4{
+        width: auto;
+        padding: 0;
+        margin: 0 1%;
+    }
+}
+.t5{
+    visibility: visible;
+    padding: 0;
+    text-align: left;
+}
+.t6{
+    padding-top: 1em;
+    max-width: 949px;
+}
+.t7{
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+}
+@media screen and (max-width: 910px){
+.t7 {
+    padding: 15px 1.6%;
+}}
+.t8{
+    background: #071215;
+    -webkit-box-shadow: 0 0 14px #030303 inset;
+    -moz-box-shadow: 0 0 14px #030303 inset;
+    box-shadow: 0 0 14px #030303 inset;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    width: 190px;
+    height: 190px;
+    padding: 20px;
+    margin-right: 15px;
+    float: left;
+    text-align: center;
+}
+@media screen and (max-width: 910px){
+.t8 {
+    height: auto;
+    max-width: 45%;
+    padding: 0 5%;
+}}
+@media screen and (max-width: 639px){
+.t8 {
+    margin: 0;
+    float: none;
+    max-width: 90%;
+}}
+.t9{
+    border: none;
+    width: 150px;
+}
+.t10{
+    overflow: hidden;
+    max-width: 444px;
+}
+.t11{
+    border: none;
+    border-color: rgb(210, 210, 210);
+}
+.t12{
+    position: relative;
+    min-height: 192px;
+    overflow: hidden;
+    padding: 11px 11px 11px 11px;
+    background: none;
+}
+.t13{
+    color: #b4b4b4;
+    font-size: 14px;
+    padding-right: 8px;
+}
+.t14{
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: 300;
+    color: rgb(210, 210, 210);
+}
+.t15{
+    margin-bottom: 16px;
+}
+.t16{
+    background-color: #1b2939;
+    border-style: solid none none;
+    border-color: black;
+    border-width: 1px 0 0;
+    height: 2px;
+}
+</style>
+        <div class="t0">
+            <div class="t1">
+                <div class="t2">
+                    <div class="t3">
+                        <div class="t4">
+                            <div class="t5">
+                                <div class="t6">
+                                    <div class="t7">
+                                        <div class="t8"><img src="/img/etc/coin.webp" class="t9"></div>
+                                        <div class="t10">
+                                            <div class="t11">
+                                                <div class="t12">
+                                                    <div class="t13">
+                                                        <h1 class="t14">Монетки</h1>
+                                                        <div class="t15"><span>Нужны для внутриигровых покупок</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="t16">
+                                        <canvas id="stats"></canvas>
+
+
+                                    </div>
+                                </div>
+
+
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../modules/invite') %>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <%- include('../modules/profile') %>
+        <script src="<%= cdn_host %>/scpsl/js/chart.min.js"></script>
+        <script src="/js/donate/trade.js"></script>
+    </body>
+</html>

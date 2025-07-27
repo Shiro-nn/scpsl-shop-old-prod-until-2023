@@ -1,0 +1,190 @@
+::-webkit-scrollbar{height:.072916667in;}::-webkit-scrollbar{width:.4375pc;}::-webkit-scrollbar-thumb{border-radius:74.25pt;}::-webkit-scrollbar-thumb{background:transparent;}::-webkit-scrollbar-thumb{box-shadow:0pt 0in 0pc 100000vh #161b2d;}::-webkit-scrollbar-track{background:linear-gradient(0deg,#ff2323 0%,#d445ff 100%);}
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+::-moz-selection{
+    color:#be1c6d;
+    background:#00000040;
+    border-radius:15px;
+}
+::selection{
+    color:#be1c6d;
+    background: #00000040;
+}
+img{
+    user-select: none;
+}
+body{
+    margin: 0;
+    position: relative;
+    display: flex;
+    font-family: 'Nunito', sans-serif;
+}
+@media (min-width: 576px){
+#render {
+    max-width: 540px;
+}}
+@media (min-width: 768px){
+#render {
+    max-width: 720px;
+}}
+@media (min-width: 992px){
+#render {
+    max-width: 960px;
+}}
+@media (min-width: 1200px){
+#render {
+    max-width: 1040px;
+}}
+@media (min-width: 1500px){
+#render {
+    max-width: 1570px;
+}}
+#render{
+    position: relative;
+    display: flex;
+    margin: 150px auto;
+    width: 100%;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.preview{
+    display: grid;
+    width: 100%;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, minmax(400px, 1fr));
+    margin-bottom: 60px;
+}
+@media (max-width: 835px){
+    .preview {
+        grid-template-columns: unset;
+        margin-bottom: 10px;
+    }
+    .preview .preimage{
+        display: none;
+    }
+}
+.preview .preimage{
+    width: 80%;
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+}
+.preview img{
+    width: 100%;
+    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(15deg) rotateY(-36deg) rotateZ(5deg) translateX(0px) translateY(0px) translateZ(0px) skewX(1deg) skewY(0deg);
+    box-shadow: -12px 4px 100px 0px #da3a8a33, 11px -6px 100px #2ba0ff33;
+    border-radius: 5px;
+    user-select: none;
+}
+.preview .pretext{
+    width: 100%;
+    padding: min(10px, 1vw) min(50px, 5vw);
+}
+.preview h1{
+    background-color: #ce54f3;
+    background-image: linear-gradient(155deg, #ff2323, #d445ff);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.preview h1 .transformer{
+    transform: rotate(3deg);
+    position: relative;
+    display: inline-block;
+    background-color: #5486f3;
+    background-image: linear-gradient(99.66deg,#d12cff -14.84%,#0047ff 138.16%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.preview span{
+    color: #abbcd5;
+    padding: 10px;
+}
+.preview .buttons{
+    display: flex;
+    justify-content: center;
+}
+.preview .buttons a{
+    margin: 30px 20px;
+    font-size: max(18px, min(22px, 3vw));
+    padding: 0.5em 2em;
+    border: 1.5px solid #4b4b4b;
+    border-radius: 16px;
+    user-select: none;
+    color: antiquewhite;
+    text-decoration: none;
+}
+.preview .buttons a:hover {
+    box-shadow: 0px 2px 8px 4px rgba(44, 79, 131, 0.4);
+    transform: translateY(-5px);
+}
+
+.trailer, .tps{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: antiquewhite;
+}
+.trailer{
+    margin-bottom: 40px;
+}
+.trailer .container{
+    width: 66%;
+    height: auto;
+    background: #1d2029;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    box-shadow: -5px 3px 50px 0px #9f3ada33, 5px -3px 50px #2bbcff33;
+}
+.trailer .container video{
+    width: 100%;
+    border-radius: 16px;
+}
+.trailer .container .audio{
+    position: absolute;
+    bottom: 35px;
+    left: 35px;
+    cursor: pointer;
+    z-index: 66;
+}
+.trailer .container .loader{
+    position: absolute;
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    top: 10px;
+    left: 10px;
+    filter:blur(4px);
+    backdrop-filter: blur(4px);
+    z-index: 67;
+}
+.trailer .container .play{
+    position: absolute;
+    z-index: 68;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    user-select: none;
+}
+
+.tps .conts{
+    width: 80%;
+    background: #1d2029;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: -5px 3px 30px 0px #3a85da33, 5px -3px 30px #a02bff33;
+}

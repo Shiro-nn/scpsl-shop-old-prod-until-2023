@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <%- include('../modules/meta', {embedName:'', metaTitle:'fydne | ', metaDesc:''}) %>
+    <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+    <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/fonts/Nunito/style.css">
+    <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+    <link href="/css/system/locations.css" rel="stylesheet" type="text/css">
+    <link href="/css/system/top_locations.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+</head>
+<body class="topbar-dark left-side-menu-dark pace-done">
+<div id="wrapper">
+    <%- include('../modules/socketInit') %>
+    <%- include('../modules/header') %>
+    <%- include('../modules/panel') %>
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search">
+    <h1>Поиск</h1>
+    <span>Введите начальную дату поиска</span>
+    <input type="date" id="start" name="trip-start" min="2020-01-01" />
+    <span>Введите конечную дату поиска</span>
+    <input type="date" id="end" name="trip-start" min="2020-01-01" />
+    <span>Введите сервер поиска</span>
+    <input type="number" value="0">
+    <button>Поиск</button>
+</div>
+<div class="connecting" style="display: none">
+    <h1>Загрузка...</h1>
+    <div class="loader"></div>
+    <span></span>
+</div>
+<div class="city">
+    <h1>Топ городов</h1>
+    <div class="list"></div>
+</div>
+<script src="/js/modules/load-style.js"></script>
+<script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+<script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+<script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+<div id="map"></div>
+<div id="players" style="display: none;">
+</div>
+<script src="/js/system/loc.cr.js"></script>
+<script src="/js/system/latest_locations.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Информация', metaDesc:'Информация'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/etc/rainbow.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <%- include('../modules/socketInit') %>
+        <div id="wrapper">
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Сборка админки</div>
+                                    <br>
+                                    <% ddata.forEach(data => {
+                                        let force = '';
+                                        let give = '';
+                                        let effects = '';
+                                        let players_roles = '';
+                                        const server = Servers.GetById(data.server);
+                                        let available = '';
+                                        if(data.force) available += '\nФорс,';
+                                        if(data.give) available += '\nВыдача предметов,';
+                                        if(data.effects) available += '\nЭффекты,';
+                                        if(data.players_roles) available += '\nПросмотр игроков,';
+                                        if(available != '') available = `Доступно: ${available}`;
+                                        if(available.substr(available.length - 1) == ',') available = available.substring(0, available.length - 1);
+                                        const style_color = `style="color:${data.color}"`; %>
+                                        <div class="col-md-12 col-md-auto bypass_col" id="back=><%-data._id%>">
+                                            <div class="card-box card-border">
+                                                <div class="row">
+                                                    <div class="cell col-3">
+                                                        <div style="margin-top:2px">
+                                                            <h1 class="roles" <%-style_color%>><%= data.prefix.charAt(0) %></h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell col-8">
+                                                        <div class="text-center mb-0 font-16 border-0 ml-0" style="width:155px;color:#fff;overflow-wrap:break-word">
+                                                            <span class="s"><%= data.prefix %></span>
+                                                            <br><span class="s">Сервер: <%= server %></span>
+                                                            <br><span class="s">Истекает: <%= data.to %></span>
+                                                            <br><span class="s"><%= available %></span>
+                                                            <button class="btn btn-bordred-danger mt-1 MoneyBackClick" id="<%-data._id%>">Вернуть средства</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+
+
+
+                            
+                            
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Готовые роли</div>
+                                    <br>
+                                    <% let gradient_any = false;
+                                    rdata.forEach(role => {
+                                        if (role.id == 8 || role.id == 9) {
+                                            gradient_any = true;
+                                        }
+                                        const server = Servers.GetById(role.server);
+                                        const _role = Roles.find(x => x.id == role.id);
+                                        const style_color = `style="color:${_role.color}"`;%>
+                                        <div class="col-md-12 col-md-auto bypass_col" id="freeze=><%-role._id%>">
+                                            <div class="card-box card-border">
+                                                <div class="row">
+                                                    <div class="cell col-3">
+                                                        <div style="margin-top:2px">
+                                                            <%if(role.id == 1){%>
+                                                                <h1 class="roles rainbow">С</h1>
+                                                            <%}else{%>
+                                                            <h1 class="roles" <%-style_color%>><%= _role.name.charAt(0) %></h1>
+                                                            <%}%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell col-8">
+                                                        <div class="text-center mb-0 font-16 border-0 ml-0" style="width:155px;color:#fff;overflow-wrap:break-word">
+                                                            <span class="s"><%= _role.name %></span>
+                                                            <br><span class="s">Сервер: <%= server %></span>
+                                                            <br><span class="s">Истекает:<br><RF-date-convert>[нет данных]</RF-date-convert></span>
+                                                            <button class="btn mt-1 RFClick hideRF" id="<%-role._id%>"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <div class="card" id="info.stats"></div>
+                                <% if (gradient_any) { %>
+                                    <style>
+                                        #gradient-tag-area {
+                                            display: flex !important;
+                                        }
+                                    </style>
+                                <% } %>
+                                <div class="card" style="display: none;" id="gradient-tag-area">
+                                    <div class="card-header">Градиент</div>
+                                    <div class="card-body" style = "display: flex; flex-direction: column;">
+                                        <span style="margin-bottom: 10px">Первичный градиент:</span>
+                                        <span style="margin-bottom: 10px;">От: <input type="color" style="cursor: pointer;" value="<%= adata.gradient.fromA %>" id="gradient_fromA"> к: <input type="color" style="cursor: pointer;" value="<%= adata.gradient.toA %>" id="gradient_toA"></span>
+                                        <span style="margin-bottom: 10px;">Вторичный градиент:</span>
+                                        <span style="margin-bottom: 10px;">От: <input type="color" style="cursor: pointer;" value="<%= adata.gradient.fromB %>" id="gradient_fromB"> к: <input type="color" style="cursor: pointer;" value="<%= adata.gradient.toB %>" id="gradient_toB"></span>
+                                        <span style="margin-bottom: 10px;">Префикс: <input type="text" style="cursor: text; color: wheat;" maxlength="20" value="<%= adata.gradient.prefix %>" placeholder="Укажите префикс" id="gradient_prefix"></span>
+                                        <button style="border: 0; width: 150px; height: 30px; border-radius: 25px; margin-bottom: 10px; color: #282e38; background-color: lime; user-select: none; cursor: pointer;" onclick="(async() => {
+                                            const res = await fetch('/internal/save_gradient', {
+                                                method: 'post',
+                                                headers: {'Content-Type': 'application/json'},
+                                                body: JSON.stringify({
+                                                    fromA: document.getElementById('gradient_fromA').value,
+                                                    toA: document.getElementById('gradient_toA').value,
+                                                    fromB: document.getElementById('gradient_fromB').value,
+                                                    toB: document.getElementById('gradient_toB').value,
+                                                    prefix: document.getElementById('gradient_prefix').value.substring(0, 20),
+                                                })
+                                            });
+                                            const json = await res.json();
+                                            if (json.error) {
+                                                alert(json.error);
+                                                location.reload();
+                                                return;
+                                            }
+                                            alert('Успешно');
+                                        })();">Сохранить</button>
+                                    </div>
+                                    <div class="card-header">Принцип работы</div>
+                                    <div class="card-body" style = "display: flex; flex-direction: column;">
+                                        <span>Сначала составляется градиент для символов префикса для "первичного" и "вторичного" градиента. Для примера можете посмотреть примерный результат на <a href="https://colordesigner.io/gradient-generator">ColorDesign</a> в моде LCH, в качестве длины берется количество символов префикса.</span>
+                                        <span>Далее строится градиент для каждого символа от "первичного" к "вторичному", и обновляется для создания анимации типа ping-pong.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="MoneyBack" style="display: none;" class="modal fade bs-example-modal-center show mb">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header mb-0">
+                        <h4 class="modal-title">Вернуть средства за донат</h4>
+                        <button type="button" class="close p" data-dismiss="modal" id="MoneyBackClose">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 mb-0">
+                            <span class="s">Вы уверены, что хотите вернуть средства за <umm id="MoneyBackDonate"></umm>?</span><br>
+                            <span class="s">На ваш баланс вернется <umm id="MoneyBackSum"></umm>₽</span><br>
+                            <button id="MoneyBackSubmit" class="btn btn-bordred-danger mt-1">Вернуть средства</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="RF" style="display: none;" class="modal fade bs-example-modal-center show mb">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header mb-0">
+                        <h4 class="modal-title"><null id="RF1">Заморозить</null> <null id="RF4">роль</null></h4>
+                        <button type="button" class="close p" data-dismiss="modal" id="RFC">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 mb-0">
+                            <span class="s">Вы уверены, что хотите <null id="RF2">заморозить</null> <null id="RF5">null</null>?</span><br>
+                            <button id="RF3" class="btn btn-bordred-warning mt-1">Заморозить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/modules/load-style.js"></script>
+        <%- include('../modules/invite') %>
+        <%- include('../modules/waiting') %>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="/js/modules/date-convert.js"></script>
+        <script src="/js/settings/MoneyBack.js"></script>
+        <script src="/js/settings/RoleFreeze.js"></script>
+        <script src="/js/render/info.js"></script>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru" style="background-color: #0D1117">
+<head>
+<script>const key = '<%-key%>';</script>
+<%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Проверка почты', metaDesc:'Подтвердите свою почту, чтобы завершить регистрацию'}) %>
+<link href="/auth/css/colors.css" rel="stylesheet">
+<link href="/auth/css/scroll.css" rel="stylesheet">
+<link href="/auth/css/cursors.css" rel="stylesheet">
+<link href="/auth/css/verify/struct.css" rel="stylesheet">
+<link href="/auth/css/auth/particles.css" rel="stylesheet">
+<link href="<%=cdn_host%>/scpsl/fonts/neons/style.css" rel="stylesheet">
+<link href="<%=cdn_host%>/scpsl/fonts/ComicSans/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="verify">
+<div class="icon">
+<div>
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+preserveAspectRatio="xMidYMid meet">
+<defs>
+
+<linearGradient id="logo-gradient" x1="100%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" stop-color="#f407fe">
+<animate attributeName="stop-color" values="#f407fe; #0cd1e0; #f407fe" dur="4s" repeatCount="indefinite"></animate>
+</stop>
+<stop offset="100%" stop-color="#0cd1e0">
+<animate attributeName="stop-color" values="#0cd1e0; #f407fe; #0cd1e0" dur="4s" repeatCount="indefinite"></animate>
+</stop>
+
+</linearGradient>
+<linearGradient id="logo-error" x1="50%" y1="0%" x2="50%" y2="100%">
+<stop offset="0%" stop-color="#f53d3d">
+<animate attributeName="stop-color" values="#f53d3d; #f129bf; #f53d3d" dur="6s" repeatCount="indefinite"></animate>
+</stop>
+<stop offset="100%" stop-color="#f129bf">
+<animate attributeName="stop-color" values="#f129bf; #f53d3d; #f129bf" dur="6s" repeatCount="indefinite"></animate>
+</stop>
+</linearGradient>
+
+<linearGradient id="logo-success" x1="50%" y1="0%" x2="50%" y2="100%">
+<stop offset="0%" stop-color="#3df86c">
+<animate attributeName="stop-color" values="#3df86c; #39ffcd; #3df86c" dur="6s" repeatCount="indefinite"></animate>
+</stop>
+<stop offset="100%" stop-color="#39ffcd">
+<animate attributeName="stop-color" values="#39ffcd; #3df86c; #39ffcd" dur="6s" repeatCount="indefinite"></animate>
+</stop>
+</linearGradient>
+
+</defs>
+<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
+<path d="M2455 5040 c-521 -39 -983 -389 -1171 -887 -14 -38 -37 -115 -51
+-173 -24 -100 -26 -123 -30 -457 l-5 -353 -106 0 c-129 0 -166 -14 -234 -87
+-84 -91 -79 15 -76 -1479 l3 -1319 21 -46 c27 -58 85 -116 143 -143 l46 -21
+1565 0 1565 0 46 21 c58 27 116 85 143 143 l21 46 0 1330 c0 1073 -3 1338 -13
+1374 -16 53 -88 133 -146 161 -34 16 -62 20 -148 20 l-106 0 -5 358 c-4 284
+-8 371 -21 427 -68 289 -199 522 -403 715 -284 268 -650 399 -1038 370z m333
+-166 c492 -88 881 -486 967 -988 11 -66 15 -168 15 -402 l0 -314 -114 0 -115
+0 -3 343 c-5 386 -9 413 -88 582 -234 502 -833 714 -1325 468 -207 -104 -395
+-308 -476 -516 -60 -156 -69 -227 -69 -569 l0 -308 -115 0 -115 0 0 308 c0
+342 10 433 61 586 195 582 769 919 1377 810z m-30 -380 c79 -19 210 -78 279
+-125 164 -113 285 -290 333 -491 18 -74 20 -118 20 -395 l0 -313 -442 -2
+c-244 -2 -617 -2 -830 0 l-388 2 0 299 c0 217 4 320 14 373 39 202 151 384
+311 505 197 149 466 205 703 147z m1387 -1494 c47 -39 45 -1 45 -1375 0 -1412
+3 -1343 -56 -1382 -27 -17 -77 -18 -899 -23 -478 -3 -1174 -3 -1545 0 -633 5
+-678 6 -704 23 -59 39 -56 -30 -56 1382 0 1373 -1 1337 45 1375 16 13 116 16
+719 20 386 3 1091 3 1567 0 750 -4 868 -7 884 -20z"/>
+<path d="M2450 2377 c-198 -57 -340 -240 -340 -437 1 -122 45 -226 137 -317
+l63 -63 0 -257 0 -258 30 -52 c89 -155 294 -179 409 -48 63 72 65 84 69 368
+l4 258 43 40 c163 150 192 401 68 579 -49 69 -138 141 -211 170 -70 27 -206
+36 -272 17z m242 -166 c98 -47 160 -141 166 -253 7 -116 -33 -197 -135 -277
+l-53 -41 0 -271 c0 -295 -5 -324 -56 -348 -66 -30 -135 0 -154 67 -5 21 -10
+149 -10 295 l0 259 -26 21 c-85 71 -108 96 -132 141 -23 44 -27 63 -27 136 0
+73 4 92 27 136 34 64 103 126 165 147 66 23 175 17 235 -12z"/>
+</g>
+</svg>
+</div>
+</div>
+<label>Проверка почты...</label>
+</div>
+<canvas id="particles"></canvas>
+
+<script src="/auth/js/main.js"></script>
+<script src="/auth/js/render/auth/particles.js"></script>
+<%- include('../modules/socketInit') %>
+<script src="/auth/js/render/verify/update.js"></script>
+
+</body>
+</html>

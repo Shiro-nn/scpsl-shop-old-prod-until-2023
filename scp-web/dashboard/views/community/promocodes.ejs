@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Промокоды', metaDesc:'Промокоды'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <%- include('../modules/socketInit') %>
+        <div id="wrapper">
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Создать промокод</div>
+                                    <br>
+                                    <form role="form" method="post" class="promo_form">
+                                        <p id="promo_text">5% - вам<br>5% - скидка для донатера</p>
+                                        <input name="mode" type="text" value="create" style="display: none;">
+                                        <input name="promo" id="promo_input" type="range" min="0" max="10" step="1" value="5" class="promo_text">
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-bordred-success mt-1 mb-2">Создать</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Мои промокоды</div>
+                                    <br>
+                                    <div style="max-height: 447px !important; max-width: 500px !important; overflow:auto;">
+                                    <% let _ = 0; pdata.forEach(async function(data) { _++;%>
+                                        <div class="col-md-12 col-md-auto bypass_col">
+                                            <div class="card-box card-border">
+                                                <div class="row">
+                                                    <div class="cell col-8">
+                                                        <form role="form" method="post" class="promo_form">
+                                                            <a onclick="navigator.clipboard.writeText('<%= data.code %>'); this.style.color = 'lime'; setTimeout(() => this.style.color = '', 2000);">Промокод: <%= data.code %></a>
+                                                            <p id="promo_text<%= _ %>"><%= data.to_owner %>% - вам<br><%= data.to_user %>% - скидка для донатера</p>
+                                                            <input name="mode" type="text" value="edit" style="display: none;">
+                                                            <input name="code" type="text" value="<%= data.code %>" style="display: none;">
+                                                            <input name="promo" class="promo_text<%= _ %>" id="promo_input" type="range" min="0" max="10" step="1" value="<%= data.to_owner %>">
+                                                            <div class="col-12">
+                                                                <button type="submit" class="btn btn-bordred-success mt-1 mb-2">Изменить</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/modules/load-style.js"></script>
+        <%- include('../modules/invite') %>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="/js/etc/promo.js"></script>
+    </body>
+</html>

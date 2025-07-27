@@ -1,0 +1,47 @@
+<head>
+  <%- include('../modules/meta', {embedName:'', metaTitle:'fydne | Пользователи', metaDesc:'Пользователи'}) %>
+  <link rel="stylesheet" href="/css/users/users.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+</head>
+<body>
+  <%- include('../modules/socketInit') %>
+  <%- include('../modules/header') %>
+  <div class="q1">
+    <input type="text" id="input" onkeyup="myFunction()" placeholder="Найти пользователя..">
+    <div id="all_users">
+      <% let _b = 1; let _a = 1; let uid = 0; let _g = true;
+      users.forEach(user => { uid++; let _name_ = user.user;
+      if(user.name != '') _name_ = user.name;
+      let boolean = (_a == 1); if(_a == 15) _a = 1; else _a++;
+      if(_g){ %><article><% }
+      else if(boolean){ %><article class="load"><% } _g = false;%>
+      <a class="q2" href="/users/<%= user.id %>">
+        <div class="q3" style="background-image: url('<%= user.avatar %>');"></div>
+        <hr class="q4">
+        <span class="q5"><%= _name_ %></span>
+        <br>
+        <span class="q6">Создан:<br><%= user.date %></span>
+      </a>
+      <% if(_b == 3){ _b = 1; %>
+      <br>
+      <% }else{ _b++;}
+      if(_a == 1 || uid == users.count){ %></article><% } %>
+      <% }); %>
+    </div>
+    <div id="search_users" align="center" style="display: none;">
+      <% users.forEach(user => { let _name_ = user.user;
+      if(user.name != '') _name_ = user.name; %>
+      <a class="q2 us" href="/users/<%= user.id %>">
+        <div class="q3" style="background-image: url('<%= user.avatar %>');"></div>
+        <hr class="q4">
+        <span class="q5"><%= _name_ %></span>
+        <br>
+        <span class="q6">Создан:<br><%= user.date %></span>
+      </a>
+      <% }); %>
+    </div>
+  </div>
+  <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+  <script src="/js/users/users.js"></script>
+</body>

@@ -1,0 +1,201 @@
+#balanceup{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin: 0 20px;
+}
+#balanceup .balance{
+    padding: 3px 12px;
+    font-size: 18px;
+    line-height: 22px;
+    color: aliceblue;
+    background: #6e6e6e44;
+    border-radius: 100px;
+    text-decoration: none;
+    user-select: none;
+    cursor: url(/cursors/red/pointer.cur), pointer !important;
+    margin: 0;
+}
+#navbarpayment.payment *{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    cursor: url(/cursors/red/standart.cur), default !important;
+}
+#navbarpayment.payment h1{
+    font-size: 2em;
+    font-weight: bold;
+    color: aliceblue;
+}
+#navbarpayment.payment h2{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: aliceblue;
+}
+#navbarpayment.payment{
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000050;
+    top: 0;
+    left: 0;
+    z-index: 6666;
+    color: aliceblue;
+}
+#navbarpayment.payment.hide{
+    display: none;
+    background-color: #00000000;
+    animation: paymentHide .5s;
+}
+
+#navbarpayment.payment .clickToHide{
+    height: 100vh;
+    width: calc(100vw - 500px);
+}
+#navbarpayment.payment.hide .clickToHide{
+    display: none;
+}
+
+#navbarpayment.payment .window{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: #292849;
+    width: 500px;
+    height: 100vh;
+    padding: 35px;
+    padding-bottom: 15px;
+    overflow-y: auto;
+    animation: paymentShow 1s;
+}
+
+#navbarpayment.payment .window .sum{
+    margin: 9px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#navbarpayment.payment .window .sum .sumInput{
+    margin-top: 7px;
+    outline: 0;
+    display: block;
+    padding: 13px 9px;
+    font-size: 16px;
+    line-height: 18px;
+    background: #6e6e6e44;
+    border-radius: 12px;
+    height: 45px;
+    border-style: none;
+    color: antiquewhite;
+    cursor: text !important;
+    cursor: url(/cursors/red/select.cur), text !important;
+}
+#navbarpayment.payment .window .sum .sumInput::-webkit-outer-spin-button,
+#navbarpayment.payment .window .sum .sumInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#navbarpayment.payment .window .selected{
+    margin: 27px 0;
+    padding: 9px;
+    display: block;
+    background: #6e6e6e44;
+    border-radius: 12px;
+    width: 100%;
+    min-height: 50px;
+}
+
+#navbarpayment.payment .window .selected .method{
+    display: flex;
+    margin-bottom: 5px;
+}
+#navbarpayment.payment .window .selected .method img{
+    height: 29px;
+    margin-right: 5px;
+}
+
+#navbarpayment.payment .window .selected .info{
+    display: flex;
+    flex-direction: column;
+    color: #c9c9c9;
+}
+
+#navbarpayment.payment .window .services{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+#navbarpayment.payment .window .services .payservice,
+#navbarpayment.payment .window .services .payservice * {
+    cursor: url(/cursors/red/pointer.cur), pointer !important;
+}
+#navbarpayment.payment .window .services .payservice {
+    background: #6e6e6e44;
+    display: inline-flex;
+    margin: 5px;
+    padding: 10px 7px 9px;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 12px;
+}
+#navbarpayment.payment .window .services .payservice.activeWay {
+    border: solid 1px aliceblue;
+}
+
+#navbarpayment.payment .window .services .payservice img {
+    height: 20px;
+    margin-right: 8px;
+}
+#navbarpayment.payment .window .services .payservice .coms{
+    margin-left: 8px;
+    font-size: 10px;
+    color: #c9c9c9;
+}
+
+#navbarpayment.payment .window .services .payservice:hover{
+    background: #cccccc44;
+}
+
+#navbarpayment.payment .window .eta{
+    margin: 16px 0;
+}
+
+#navbarpayment.payment .window .pay,
+#navbarpayment.payment .window .pay *{
+    cursor: url(/cursors/red/pointer.cur), pointer !important;
+}
+#navbarpayment.payment .window .pay{
+    background-color: #99ffff2a;
+    color: #99ffff;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    padding: 5px 10px;
+    user-select: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+}
+#navbarpayment.payment .window .pay:hover{
+    background: #99ffff40;
+}
+@keyframes paymentShow{
+    from{transform: translateX(100%)}
+    to{transform: translateX(0)}
+}
+@keyframes paymentHide{
+    from{
+        display: flex;
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(50%);
+    }
+}

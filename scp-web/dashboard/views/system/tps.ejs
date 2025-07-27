@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%- include('../modules/meta', {embedName:'fydne | TPS Cерверов', metaTitle:'fydne | TPS Cерверов', metaDesc:'TPS - Ticks Per Seconds (Тики в секунду) - это то, как быстро сервер способен обновлять игровую информацию. TickRate - лимит TPS, выше этого значения TPS не поднимется.'}) %>
+    <link rel="stylesheet" href="/css/system/tps.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body translate="no">
+    <%- include('../modules/socketInit') %>
+    <%- include('../modules/header') %>
+    <div class="t0">
+      <div class="t1">
+        <div class="t2">
+          <div class="t3">
+            <div class="t4">
+              <div class="t5">
+                <div class="t6">
+                  <div class="t7" id="canvas_area">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/modules/load-style.js"></script>
+    <script src="<%= cdn_host %>/scpsl/js/canvasjs.min.js"></script>
+    <script src="/js/system/tps.js"></script>
+    <%- include('../modules/invite') %>
+  </body>
+</html>

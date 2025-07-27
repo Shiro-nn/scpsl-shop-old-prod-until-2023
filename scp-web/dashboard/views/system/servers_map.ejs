@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'', metaTitle:'fydne | ', metaDesc:''}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link href="/css/system/servers_map.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <div id="wrapper">
+            <%- include('../modules/socketInit') %>
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/js/modules/load-style.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+
+        <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+
+        <div id="map">
+            <div id="servers" style="display: none;"></div>
+            <div id="rangeArea">
+                <div id="rangeBlock"></div>
+                <span id="rangeCords">0, 0</span>
+                <span id="rangeServer"><cords>0, 0</cords><button>Изменить</button></span>
+            </div>
+        </div>
+        <script src="/js/system/loc.cr.js"></script>
+        <script src="/js/system/servers_map.js"></script>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+#waiting{
+    z-index: 99999;
+    position: absolute;
+    pointer-events: none;
+}

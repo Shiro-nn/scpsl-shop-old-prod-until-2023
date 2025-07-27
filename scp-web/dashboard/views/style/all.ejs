@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Стили', metaDesc:'Стили'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark  pace-done">
+        <div id="wrapper">
+            <%- include('../modules/socketInit') %>
+            <% if(!my){ %>
+                <iframe id="modal-dialogs" src="/style/frame"></iframe>
+            <% }else{ %>
+                <iframe id="modal-dialogs" src="/style/frame/my"></iframe>
+            <% } %>
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <style>
+            #modal-dialogs {
+                width: 100.1%;
+                margin: 0;
+                padding: 0;
+                background-color:#000;
+                left: 0;
+                right: 0;
+                margin-top: 0px !important;
+            }
+            body{
+                overflow: hidden
+            }
+            iframe{
+                border:0px solid rgba(0, 0, 0, 0);
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                width: 100vw;
+                height: 100vh;
+            }
+            </style>
+        </div>
+        <%- include('../modules/invite') %>
+        <script src="/js/modules/load-style.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="/js/etc/load-frame-styles.js"></script>
+    </body>
+</html>

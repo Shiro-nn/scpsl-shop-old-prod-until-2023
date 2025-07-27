@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../../modules/meta', {embedName:'fydne', metaTitle:'fydne | Администрация', metaDesc:'Администрация'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <%- include('../../modules/socketInit') %>
+        <script>const aid = parseInt('<%- aid %>');</script>
+        <div id="wrapper">
+            <%- include('../../modules/header') %>
+            <%- include('../../modules/panel') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card" id="admin.stats.role"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card" id="admin.stats.time"></div>
+                                <div class="card" id="admin.stats.work"></div>
+                            </div>
+                            <div class="col-md-4" style="z-index: 2;">
+                                <div class="card">
+                                    <div class="card-header" id="admins.count">Админы</div><br>
+                                    <div style="max-height: 447px !important; max-width: 500px !important; overflow:auto;">
+                                        <div id="admins.list"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/modules/load-style.js"></script>
+        <%- include('../../modules/invite') %>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <%- include('../../modules/discord') %>
+        <%- include('../../modules/profile') %>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="/js/render/admins/stats.js"></script>
+        <script src="/js/render/admins/list.js"></script>
+    </body>
+</html>

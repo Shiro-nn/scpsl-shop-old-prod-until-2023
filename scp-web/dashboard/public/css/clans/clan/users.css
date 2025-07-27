@@ -1,0 +1,122 @@
+.dmu1{
+width: 100%;
+padding: 0 55px;
+}
+.dmu2{
+display: inline-block;
+vertical-align: top;
+margin: 5px;
+width: calc(33% - 10px);
+background-color: #4e545e;
+border-radius: 10px;
+color: antiquewhite;
+padding: 5px;
+position: relative;
+}
+.dmu3{
+position: relative;
+text-align: center;
+align-items: center;
+font-size: 20px;
+padding-bottom: 15px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.dmu3 .fa-crown{color:rgb(255, 255, 0)}
+.dmu4 .dmu2{width: calc(49% - 10px);}
+.dmu5{
+height: 1px;
+background-color:var(--clan-color);
+border: none;
+width: calc(100% + 10px);
+margin-left: -5px;
+}
+.dmu6{
+max-height: 500px;
+background-color: #41464e;
+padding: 10px 20px;
+border-radius: 5px;
+overflow: auto;
+}
+.dmu7{
+background-color: #4e545e;
+border-radius: 5px;
+padding: 5px;
+display: flex;
+position: relative;
+margin-bottom: 10px;
+}
+.dmu7:last-child{
+margin-bottom: 0;
+}
+.dmu8{
+display: inline-block;
+text-indent: -9999px;
+background-size: cover;
+object-fit: cover;
+border-radius: 50%;
+overflow: hidden;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+width: 40px;
+height: 40px;
+}
+.dmu9{
+white-space: break-spaces;
+overflow: hidden;
+display: flex;
+flex-direction: row;
+display: inline-block;
+font-size: 1rem;
+font-weight: 500;
+line-height: 22px;
+color: #fff;
+margin: 0;
+margin-left: 10px;
+vertical-align: middle;
+max-width: 200px;
+text-overflow: ellipsis;
+padding: 9px 0;
+}
+.dmu7 .fa-user-gear{
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+right: 7px;
+z-index: 9;
+}
+.dmu7 .fa-user-minus{
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+right: 34px;
+z-index: 9;
+}
+.dmu10{
+top: 5px;
+right: 10px;
+position: absolute !important;
+width: 16px;
+padding: 0 5px;
+}
+.dmu11{
+list-style-type: none;
+display: flex;
+align-items: center;
+margin-bottom: 0.625rem;
+}
+.dmu11 .fa-solid{
+margin-right: 7px;
+}
+.dmu11 .fa-check{
+color: lime;
+margin-right: 7px;
+}
+.dmu11 .fa-xmark{
+color: red;
+margin-right: 7px;
+}

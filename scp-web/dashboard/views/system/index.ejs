@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'', metaTitle:'fydne | Нагрузка серверов', metaDesc:'Нагрузка серверов'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link href="/css/system/stats.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <div id="wrapper">
+            <%- include('../modules/socketInit') %>
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <% sysdata.forEach(async(host) => { %>
+                        <button class="click_me" style="display: none;" onclick='system_load(`<%- JSON.stringify(host.data) %>`, "<%= host.ip %>")'></button>
+                        <label><%= host.data[host.data.length - 1].category %> | iP: <%= host.ip %> | <%= host.data[host.data.length - 1].name %></label><br>
+                        <label>Uptime: <%= prettyMs(Math.floor(host.data[host.data.length - 1].uptime) * 1000, {verbose:true}) %></label><br>
+                        <div class="row">
+                            <div class="col" id="<%= host.ip %>1"></div>
+                            <div class="col" id="<%= host.ip %>2"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="<%= host.ip %>3"></div>
+                            <div class="col" id="<%= host.ip %>4"></div>
+                        </div>
+                        <div class="row" id="<%= host.ip %>5"></div><br><br>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../modules/invite') %>
+        <script src="/js/modules/load-style.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/canvasjs.min.js"></script>
+        <script src="/js/system/stats.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+    </body>
+</html>

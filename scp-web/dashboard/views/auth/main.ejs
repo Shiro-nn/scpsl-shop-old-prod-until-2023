@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru" style="background-color: #0D1117">
+<head>
+<%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Авторизация', metaDesc:'Войдите в свой аккаунт или зарегистрируйтесь'}) %>
+<link href="/auth/css/colors.css" rel="stylesheet">
+<link href="/auth/css/scroll.css" rel="stylesheet">
+<link href="/auth/css/cursors.css" rel="stylesheet">
+<link href="/auth/css/auth/body.css" rel="stylesheet">
+<link href="/auth/css/auth/struct.css" rel="stylesheet">
+<link href="/auth/css/auth/adaptive.css" rel="stylesheet">
+<link href="/auth/css/auth/particles.css" rel="stylesheet">
+<link href="<%=cdn_host%>/scpsl/fonts/neons/style.css" rel="stylesheet">
+<link href="<%=cdn_host%>/scpsl/fonts/Nunito/style.css" rel="stylesheet">
+<link href="<%=cdn_host%>/scpsl/fonts/ComicSans/style.css" rel="stylesheet">
+</head>
+<body><!-- 50 / (960 / X) -->
+<div class="auth">
+    <div class="logo">
+        <img src="/auth/img/logo.png">
+        <span><a href="javascript:void(0)">Qurre ID</a> | fydne</span>
+    </div>
+    <div class="area">
+        <div class="cont login">
+            <h1 class="welcome">С возвращением</h1>
+            <span class="welcome">Войдите в свой аккаунт</span>
+            <div class="content">
+                <div class="inputdiv">
+                    <span>Логин</span>
+                    <input type="text" maxlength="50" placeholder="Введите ваш логин или email">
+                </div>
+                <div class="inputdiv">
+                    <span>Пароль</span>
+                    <input type="password" placeholder="Введите ваш пароль">
+                </div>
+                <div class="prehelp">
+                    <div class="remember">
+                        <input type="checkbox" id="remember_checkbox"><label for="remember_checkbox">Запомнить на 30 дней</label>
+                    </div>
+                    <div class="forgot">
+                        <span>Забыли пароль?</span>
+                    </div>
+                </div>
+                <button class="click">Войти</button>
+                <span class="welcome">Нет аккаунта? <span class="change.win">Зарегистрироваться</span></span>
+            </div>
+        </div>
+        <div class="cont register" style="display: none;">
+            <h1 class="welcome">Регистрация</h1>
+            <span class="welcome">Введите данные вашего нового аккаунта</span>
+            <div class="content">
+                <div class="inputdiv">
+                    <span>Email</span>
+                    <input type="email" maxlength="50" placeholder="Введите ваш email">
+                </div>
+                <div class="inputdiv">
+                    <span>Логин</span>
+                    <input type="text" maxlength="50" placeholder="Введите ваш логин">
+                </div>
+                <div class="inputdiv">
+                    <span>Ник</span>
+                    <input type="nick" maxlength="50" placeholder="Введите ваш публичный ник">
+                </div>
+                <div class="inputdiv">
+                    <span>Пароль</span>
+                    <input type="password" placeholder="Введите ваш пароль">
+                </div>
+                <button class="click">Зарегистрироваться</button>
+                <span class="welcome">Есть аккаунт? <span class="change.win">Войти</span></span>
+            </div>
+        </div>
+        <div class="cont reset" style="display: none;">
+            <h1 class="welcome">Сброс пароля</h1>
+            <span class="welcome">Введите email вашего аккаунта</span>
+            <div class="content">
+                <div class="inputdiv">
+                    <span>Email</span>
+                    <input type="email" maxlength="50" placeholder="Введите ваш email">
+                </div>
+                <button class="click">Сбросить пароль</button>
+                <span class="welcome">Вспомнили пароль? <span class="change.win">Войти</span></span>
+            </div>
+        </div>
+    </div>
+</div>
+<canvas id="particles"><img src="/auth/img/pin-code.png"></canvas>
+
+<script src="/auth/js/main.js"></script>
+<script src="/auth/js/render/auth/wins.js"></script>
+<script src="/auth/js/render/auth/checker.js"></script>
+<script src="/auth/js/render/auth/interact.js"></script>
+<script src="/auth/js/render/auth/particles.js"></script>
+
+<script src="<%=cdn_host%>/scpsl/js/crypto.js"></script>
+
+</body>
+</html>

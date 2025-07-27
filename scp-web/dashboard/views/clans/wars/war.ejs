@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ru" style="background-color: #0D1117">
+    <head>
+        <meta name="author" content="fydne">
+        <%- include('../../modules/meta', {embedName:'fydne', metaTitle:'fydne | Клановая Война', metaDesc:'Узнайте подробнее про данную Клановую Войну. Если данная КВ подходит Вам, присоединитесь к ней'}) %>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/clans/wars/main.css">
+        <link rel="stylesheet" href="/css/clans/wars/war.css">
+        <!--<link rel="stylesheet" href="/css/custom_style.css?fix=.css">-->
+
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/fonts/ComicSans/style.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/fonts/Spirits/style.css">
+
+        <script>const tag = '<%=tag%>';</script>
+        <script>const cdn_host = '<%=cdn_host%>';</script>
+    </head>
+    <body>
+        <%- include('../../modules/socketInit') %>
+        <%- include('../../modules/header') %>
+<style>
+body{
+margin: 0;
+color: #fff;
+font-family: -apple-system,BlinkMacSystemFont,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+text-rendering: optimizeLegibility;
+}
+h1, h2, h3{margin: 0;}
+
+.no-spinner{
+padding-top: 100px;
+position: fixed;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.spinner{
+--spinner-scale: 1;
+width: 40px;
+height: 40px;
+margin: auto;
+position: relative;
+backface-visibility: hidden;
+animation: spinner-3 1s cubic-bezier(.4,0,0,1) infinite;
+}
+.spinner::before, .spinner::after {
+content: '';
+background: #fff;
+height: 8px;
+width: 8px;
+position: absolute;
+border-radius: 50px;
+top: 16px;
+backface-visibility: hidden;
+}
+.spinner::before {
+left: 0;
+animation: spinner-1 1s cubic-bezier(.2,0,0,.2) infinite
+}
+.spinner::after {
+left: 15px;
+animation: spinner-2 1s cubic-bezier(.4,0,0,1) infinite;
+box-shadow: 15px 0 0 0 #fff;
+}
+@keyframes spinner-1 {
+0% {transform: scale(1) rotate(0.01deg)}
+30% {transform: scale(1.4) rotate(0.01deg)}
+100% {transform: scale(1) rotate(0.01deg)}
+}
+@keyframes spinner-2 {
+0% {opacity: 1;transform: translate(0,0) rotate(0.01deg)}
+40% {opacity: .5}
+100% {opacity: 1;transform: translate(-45px,0) rotate(0.01deg)}
+}
+@keyframes spinner-3 {
+0% {transform: translate(0,0) rotate(0.01deg)}
+100% {transform: translate(30px,0) rotate(0.01deg)}
+}
+
+.content{
+padding: 0 15vw;
+padding-top: 110px;
+}
+@media only screen and (max-width: 1640px) {
+    .content{
+        padding-left: min(246px, 5vw);
+        padding-right: min(246px, 5vw);
+    }
+}
+@media only screen and (max-width: 1272px) {
+    .images{
+        grid-column: span 12/span 12 !important;
+        border-top: solid 1px #fff !important;
+        border-bottom:0!important;
+        border-left:0!important;
+        border-right:0!important;
+        border-image: linear-gradient(to right, #ed28ff, #2897ff) 30 30 stretch !important;
+    }
+    .inf{
+        grid-column: span 12/span 12 !important;
+    }
+    .img-cont img{
+        height: min(170px, 100%) !important;
+    }
+}
+.info{
+display: grid;
+grid-template-columns: repeat(12,minmax(0,1fr));
+background-color: #333d4d;
+border-radius: 16px;
+}
+.images{
+display: flex;
+justify-content: center;
+grid-column: span 9/span 9;
+border-left: solid 1px #fff;
+border-image: linear-gradient(to bottom, #ed28ff, #2897ff)  1 100%;
+background: radial-gradient(#4a5972, #333d4d);
+padding: calc(var(--client-x, 500px) / 50) 0;
+padding-left: 1px;
+border-top-right-radius: 16px;
+border-bottom-right-radius: 16px;
+}
+.img-cont{
+width: 90%;
+position: relative;
+-webkit-user-select: none;
+user-select: none;
+}
+.img-cont .counter{
+border-radius: 16px;
+background-color: #3e4147;
+padding: 5px;
+margin: 5px;
+position: absolute;
+right: 0;
+}
+.img-cont img{
+position: relative;
+width: 100%;
+height: 505px;
+border-radius: 16px;
+text-indent: -9999px;
+background-size: cover;
+object-fit: cover;
+}
+.img-cont .slider{
+position: absolute;
+top: 0;
+height: calc(100% - 15px);
+width: 30px;
+margin: 5px;
+cursor: url(/cursors/red/pointer.cur), pointer;
+background-size: 50%;
+background-repeat: no-repeat;
+background-position: center;
+}
+.img-cont .left{
+left: 0;
+background-image: url(/img/clans/slider-left.svg);
+}
+.img-cont .right{
+right: 0;
+background-image: url(/img/clans/slider-right.svg);
+}
+.img-cont .spinner{
+position: absolute;
+top: 50%;
+left: 50%;
+margin: 0;
+transform:translateX(-50%) translateX(-50%);
+}
+.inf{
+display: flex;
+justify-content: center;
+grid-column: span 3/span 3;
+}
+.inf-container{
+width: 90%;
+padding: 20px 10px;
+}
+.inf-container .owner-info .clan-tag{
+font-weight: 300;
+font-style: normal;
+font-family: montserrat,sans-serif;
+list-style: none;
+color: #fff;
+touch-action: manipulation;
+box-sizing: border-box;
+user-select: auto;
+font-size: 1rem;
+line-height: 1.25rem;
+background: #52555e;
+border-radius: 2px;
+border: 1px solid #52555e;
+display: inline-block;
+height: 28px;
+position: relative;
+text-decoration: none;
+width: 64px;
+}
+.inf-container .owner-info .clan-tag .clan-name{
+font-style: normal;
+font-family: montserrat,sans-serif;
+list-style: none;
+line-height: 1.25rem;
+touch-action: manipulation;
+box-sizing: border-box;
+color: white !important;
+overflow: hidden;
+display: block;
+font-size: .875rem;
+font-weight: 700;
+letter-spacing: 1px;
+margin-top: 2px;
+text-align: center;
+text-indent: 2px;
+text-transform: uppercase;
+width: 100%;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.inf-container .owner-info .clan-tag .clan-border{
+font-weight: 300;
+font-style: normal;
+font-family: montserrat,sans-serif;
+list-style: none;
+color: #fff;
+font-size: 1rem;
+line-height: 1.25rem;
+touch-action: manipulation;
+box-sizing: border-box;
+cursor: url(/cursors/red/pointer.cur), pointer;
+overflow: hidden;
+user-select: auto;
+border-bottom-left-radius: 1px;
+border-bottom-right-radius: 1px;
+bottom: 0;
+display: flex;
+height: 3px;
+left: 0;
+position: absolute;
+width: 100%;
+background-color: #ff00c6;
+}
+
+.inf-container .type{
+display: flex;
+justify-content: center;
+margin-top: 10px;
+}
+.inf-container .name{
+margin-top: 5px;
+color: #c5c5c5;
+display: flex;
+justify-content: center;
+text-align: center;
+}
+.inf-container .goal{
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+.inf-container .goal-info{
+margin-top: 5px;
+color: #c5c5c5;
+display: flex;
+justify-content: center;
+text-align: center;
+}
+.inf-container .treasury{
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+.inf-container .treasury-info{
+margin-top: 5px;
+color: #c5c5c5;
+display: flex;
+justify-content: center;
+text-align: center;
+}
+.inf-container .add-coins-info{
+display: flex;
+justify-content: center;
+margin-top: 10px;
+cursor: url(/cursors/red/help.cur), help;
+}
+.inf-container .date{
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+.inf-container .date-info{
+margin-top: 5px;
+color: #c5c5c5;
+display: flex;
+justify-content: center;
+text-align: center;
+cursor: url(/cursors/red/help.cur), help;
+}
+.inf-container .owner{
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+.inf-container .owner-info{
+margin-top: 5px;
+display: flex;
+justify-content: center;
+text-align: center;
+}
+.inf-container .data-center{
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+.inf-container .data-center-info{
+margin-top: 5px;
+color: #c5c5c5;
+display: flex;
+justify-content: center;
+text-align: center;
+}
+
+.icon{
+width: 24px;
+height: 24px;
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+}
+.inf-container .type .icon{
+width: 32px;
+height: 32px;
+margin: 3px;
+background-image: url(/img/clans/point-of-interest.png);
+}
+.inf-container .goal .icon{
+margin: 3px;
+margin-right: 6px;
+background-image: url(/img/clans/goal.png);
+}
+.inf-container .treasury .icon{
+margin: 3px;
+margin-right: 6px;
+background-image: url(/img/clans/treasury.png);
+}
+.inf-container .treasury-info .icon.coin{
+width: 16px;
+height: 16px;
+margin: 1.5px;
+margin-right: 4px;
+background-image: url(/img/clans/coin.png);
+}
+.inf-container .treasury-info .icon.money{
+width: 16px;
+height: 16px;
+margin: 1.5px;
+margin-right: 4px;
+background-image: url(/img/clans/ruble.png);
+}
+.inf-container .add-coins-info .icon.on{
+width: 20px;
+height: 20px;
+margin: 1.5px;
+margin-right: 4px;
+background-image: url(/img/clans/checked.png);
+}
+.inf-container .add-coins-info .icon.off{
+width: 20px;
+height: 20px;
+margin: 1.5px;
+margin-right: 4px;
+background-image: url(/img/clans/no-money.png);
+}
+.inf-container .date .icon{
+margin: 3px;
+margin-right: 6px;
+background-image: url(/img/clans/calendar.png);
+}
+.inf-container .owner .icon{
+margin: 3px;
+margin-right: 6px;
+background-image: url(/img/clans/crown.png);
+}
+.inf-container .data-center .icon{
+margin: 3px;
+margin-right: 6px;
+background-image: url(/img/clans/data-center.png);
+}
+.inf-container .data-center-info .icon{
+width: 16px;
+height: 16px;
+margin: 1.5px;
+margin-right: 4px;
+}
+.inf-container .data-center-info .icon.earth{
+background-image: url(/img/clans/flags/earth.png);
+}
+.inf-container .data-center-info .icon.russia{
+background-image: url(/img/clans/flags/russia.png);
+}
+.inf-container .data-center-info .icon.austria{
+background-image: url(/img/clans/flags/austria.png);
+}
+.inf-container .data-center-info .icon.germany{
+background-image: url(/img/clans/flags/germany.png);
+}
+.inf-container .data-center-info .icon.finland{
+background-image: url(/img/clans/flags/finland.png);
+}
+.inf-container .data-center-info .icon.netherlands{
+background-image: url(/img/clans/flags/netherlands.png);
+}
+</style>
+<style>
+.setup{
+margin: 40px 0;
+border-radius: 16px;
+height: 500px;
+width: 100%;
+background-color: #333d4d;
+background: radial-gradient(#4a5972, #333d4d);
+padding: 10px;
+position: relative;
+}
+.setup canvas{
+width: 100%;
+height: 100%;
+border-radius: 16px;
+position: relative;
+}
+.progress{
+border-radius: 16px;
+position: absolute;
+height: calc(100% - 20px);
+width: calc(100% - 20px);
+background: #0d0d0d;
+display: -webkit-box;
+display: flex;
+flex-direction: column;
+-webkit-box-pack: center;
+justify-content: center;
+-webkit-box-align: center;
+align-items: center;
+z-index: 99;
+}
+.progress div{
+margin: 5px 0;
+text-align: center;
+position: relative;
+width: 10vw;
+height: 1px;
+background: #1b1b1b;
+}
+.progress hr, .post-progress hr{
+margin: 0;
+background: red;
+border: none;
+height: 1px;
+width: 0;
+}
+.post-progress{
+position: absolute;
+width: calc(100% - 50px);
+height: 4px;
+margin: 0 15px;
+border-radius: 50%;
+background: #1b1b1b;
+top: 6px;
+}
+.post-progress hr{
+height: 4px;
+border-radius: 16px;
+}
+</style>
+        <div class="no-spinner"><style>body{overflow: hidden;}</style><div class="spinner"></div></div>
+        <div class="content" style="opacity: 0;">
+            <div class="info">
+                <div class="inf">
+                    <div class="inf-container">
+                        <div class="type">
+                            <i class="icon"></i>
+                            <h1></h1>
+                        </div>
+                        <div class="name"></div>
+                        <div class="goal">
+                            <i class="icon"></i>
+                            <h2>Цель</h2>
+                        </div>
+                        <span class="goal-info"></span>
+                        <div class="treasury">
+                            <i class="icon"></i>
+                            <h2>Призовой фонд</h2>
+                        </div>
+                        <span class="treasury-info"><i class="icon"></i> <b style="margin-right: 3px;">0</b> монет</span>
+                        <div class="add-coins-info">
+                            <i class="icon"></i>
+                            <h3></h3>
+                        </div>
+                        <div class="date">
+                            <i class="icon"></i>
+                            <h2>Дата проведения</h2>
+                        </div>
+                        <span class="date-info"></span>
+                        <div class="owner">
+                            <i class="icon"></i>
+                            <h2>Организатор</h2>
+                        </div>
+                        <span class="owner-info">
+                            <a class="clan-tag">
+                                <span class="clan-name">----</span>
+                                <div class="clan-border"></div>
+                            </a>
+                        </span>
+                        <div class="data-center">
+                            <i class="icon"></i>
+                            <h2>Дата-Центр</h2>
+                        </div>
+                        <span class="data-center-info"><i class="icon"></i><text>Unknow</text></span>
+                    </div>
+                </div>
+                <div class="images">
+                    <div class="img-cont">
+                        <div class="spinner"></div>
+                        <img src="" loading="lazy">
+                        <counter class="counter">0/0</counter>
+                        <span class="slider left"></span>
+                        <span class="slider right"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="setup">
+                <div class="progress"><prgs>0%</prgs><div><hr></div><span><cnt>0</cnt>/10</span></div>
+            </div>
+        </div>
+
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.scale.css"/>
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.perspective.css"/>
+        <script src="<%= cdn_host %>/scpsl/js/popper.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/tippy-bundle.umd.js"></script>
+
+        <script src="/js/clans/wars/socket.js"></script>
+        <script src="/js/clans/wars/converts.js"></script>
+        <script src="/js/clans/wars/war/_init.js"></script>
+        <script src="/js/clans/wars/war/models.js"></script>
+        
+        <script src="<%=cdn_host%>/three.js/build/three.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Ачивки', metaDesc:'Ачивки'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/achievements.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <%- include('../modules/socketInit') %>
+        <div id="wrapper">
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Создать Ачивку</div>
+                                    <br>
+                                    <input class="inptname" type="text" id="name_achvm" maxlength="25">
+                                    <br>
+                                    <textarea class="txtarea" id="desc_achvm"></textarea>
+                                    <br>
+                                    <input id="f1" type="file" multiple="" accept=".jpg,.jpeg,.png,.webp" aria-label="Изменить аватар">
+                                    <div class="col-12">
+                                        <button id="send_achv" class="btn btn-bordred-success mt-1 mb-2">Создать</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Ачивки</div>
+                                    <br>
+                                    <div style="max-height: 447px !important; max-width: 500px !important; overflow:auto;">
+                                    <% achievements.forEach(async function(data) { %>
+                                        <div class="col-md-12 col-md-auto bypass_col">
+                                            <div class="card-box card-border">
+                                                <div class="row">
+                                                    <div class="cell col-3">
+                                                        <div style="margin-top:2px">
+                                                            <div class="rounded-circle" style="background-image: url('<%= data.img %>');"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell col-8">
+                                                        <a onclick="navigator.clipboard.writeText('<%= data.name %>'); this.style.color = 'lime'; setTimeout(() => this.style.color = '', 2000);">Ачивка: <%= data.name %></a>
+                                                        <p><%= data.desc %></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/modules/load-style.js"></script>
+        <%- include('../modules/invite') %>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/autogrow-textarea.js"></script>
+        <script src="/js/etc/achievements.js"></script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html style="background-color: #161b2d;">
+    <head>
+        <%- include('./modules/meta', {embedName:'fydne', metaTitle:'fydne', metaDesc:'fydne — это проект новой эры'}) %>
+        <link rel="stylesheet" href="<%=cdn%>/fonts/Nunito/style.css">
+        <link rel="stylesheet" href="/css/main/index.css">
+        <script>const cdn = '<%= cdn %>';</script>
+    </head>
+    <body>
+        <%- include('./modules/socketInit') %>
+        <%- include('./modules/header') %>
+<style>
+</style>
+        <div id="render">
+            <div class="preview">
+                <div class="pretext">
+                    <h1>fydne — это проект <span class="transformer">новой</span> эры</h1>
+                    <span>Получите <span style="text-decoration: underline; padding: 0;">абсолютно</span> новые эмоции на наших серверах. Уникальные и интересные плагины. Новые игровые механики. Новые локации. И все это только на наших серверах.</span>
+                    <div class="buttons">
+                        <a href="/info">Профиль</a>
+                        <a href="/donate">Донат</a>
+                    </div>
+                </div>
+                <div class="preimage">
+                    <img src="/bin/main/preview.png">
+                </div>
+            </div>
+            <div class="trailer">
+                <h1>Трейлер</h1>
+                <div class="container">
+                    <div class="loader"></div>
+                    <div class="play">
+                        <img width="60px" height="60px" src="/bin/main/play-button.svg">
+                        <span>Посмотреть трейлер</span>
+                    </div>
+                    <img class="audio" width="30px" height="30px" src="<%= cdn %>/img/index/volume-xmark-solid.svg">
+                    <video loop>
+                        <source src="<%= cdn %>/trailers/SerpentsHand_optimize.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="tps">
+                <h1>TPS</h1>
+                <div class="conts">
+                    <canvas id="tps.area"></canvas>
+                </div>
+            </div>
+        </div>
+        <module>
+            <script src="/js/main/hi.js"></script>
+            <script src="/js/main/trailer.js"></script>
+            <script src="<%= cdn %>/js/chart.min.js"></script>
+            <script src="/js/main/tps.js"></script>
+        </module>
+    </body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Контроль Донатеров', metaDesc:'Контроль Донатеров'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/etc/rainbow.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <%- include('../modules/socketInit') %>
+        <div id="wrapper">
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4" style="z-index: 2;">
+                                <div class="card">
+                                    <div class="card-header">Донатеры (<%= ddata.length %>)</div>
+                                    <br>
+                                    <div style="max-height: 447px !important; max-width: 500px !important; overflow:auto;">
+                                    <% ddata.forEach(function(don) {
+                                        let force = '';
+                                        let give = '';
+                                        let effects = '';
+                                        let players_roles = '';
+                                        const server = Servers.GetById(don.server);
+                                        if(don.force) force = '\nФорс,';
+                                        if(don.give) give = '\nВыдача предметов,';
+                                        if(don.effects) effects = '\nЭффекты,';
+                                        if(don.players_roles) players_roles = '\nПросмотр игроков'; 
+                                        adata.forEach(function(data) {
+                                            if(data.user == don.owner){
+                                            let discord_visible = false;
+                                            let profile_discord = {};
+                                            if(data.discord != ''){
+                                                discord_visible = true;
+                                            }
+                                            const style_color = `style="color:${don.color}"`;
+                                        %>
+                                        <div class="col-md-12 col-md-auto bypass_col">
+                                            <div class="card-box card-border">
+                                                <div class="row">
+                                                    <div class="cell col-3">
+                                                        <div style="margin-top:2px">
+                                                            <h1 class="roles" <%-style_color%>><%= don.prefix.charAt(0) %></h1>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell col-8">
+                                                        <p class="text-center mb-0 font-16 border-0 ml-0" style="width:155px;color:#fff;overflow-wrap:break-word">
+                                                        <%= don.prefix %>
+                                                        <br><span class="render_user p" id="@<%=data.id%>">@Invalid User</span>
+                                                        <br>Сервер: <%= server %>
+                                                        <br>Истекает: <%= don.to %>
+                                                        <br>Доступно: <%= force %><%= give %><%= effects %><%= players_roles %>
+                                                        <% if(data.steam != ''){ %>
+                                                        <br><a style="color: rgb(102, 102, 102);" onclick="window.open('https://steamcommunity.com/profiles/<%= data.steam %>', 'Steam', 'resizable,scrollbars,status')">Steam</a>
+                                                        <% } %>
+                                                        <% if(discord_visible){ %>
+                                                        <br><a class="c15 render_discord" id="@<%= data.discord %>">@Invalid User</a>
+                                                        <% } %></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                        <% }); %>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-md-4" style="z-index: 2;">
+                                <div class="card">
+                                    <div class="card-header">Донатеры (<%= rdata.length %>)</div>
+                                    <br>
+                                    <div style="max-height: 447px !important; max-width: 500px !important; overflow:auto;">
+                                    <% rdata.forEach(function(role) {
+                                        const server = Servers.GetById(role.server);
+                                        const _role = Roles.find(x => x.id == role.id);
+                                        let steamID = '';
+                                        let discordID = '';
+                                        let UID = 0;
+                                        {
+                                            const data = adata.find(x => x.id == role.owner);
+                                            try{
+                                                discordID = data.discord;
+                                                steamID = data.steam;
+                                                UID = data.id;
+                                            }catch{}
+                                        }
+                                        const style_color = `style="color:${_role.color}"`;
+                                        %>
+                                        <div class="col-md-12 col-md-auto bypass_col" id="freeze=><%-role._id%>">
+                                            <div class="card-box card-border">
+                                                <div class="row">
+                                                    <div class="cell col-3">
+                                                        <div style="margin-top:2px">
+                                                            <%if(role.id == 1){%>
+                                                                <h1 class="roles rainbow">R</h1>
+                                                            <%}else{%>
+                                                            <h1 class="roles" <%-style_color%>><%= _role.name.charAt(0) %></h1>
+                                                            <%}%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell col-8">
+                                                        <p class="text-center mb-0 font-16 border-0 ml-0" style="width:155px;color:#fff;overflow-wrap:break-word">
+                                                        <%= _role.name %>
+                                                        <br><span class="render_user p" id="@<%=UID%>">@Invalid User</span>
+                                                        <br>Сервер: <%= server %>
+                                                        <br>Истекает:<br><RF-date-convert>[нет данных]</RF-date-convert>
+                                                        <% if(steamID != ''){ %>
+                                                        <br><a style="color: rgb(102, 102, 102);" onclick="window.open('https://steamcommunity.com/profiles/<%= steamID %>', 'Steam', 'resizable,scrollbars,status')">Steam</a>
+                                                        <% } %>
+                                                        <% if(discordID != ''){ %>
+                                                        <br><a class="c15 render_discord" id="@<%= discordID %>">@Invalid User</a>
+                                                        <% } %></p>
+                                                        <button class="btn mt-1 RFClick hideRF" id="<%-role._id%>"></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="RF" style="display: none;" class="modal fade bs-example-modal-center show mb">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header mb-0">
+                        <h4 class="modal-title"><null id="RF1">Заморозить</null> <null id="RF4">роль</null></h4>
+                        <button type="button" class="close p" data-dismiss="modal" id="RFC">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 mb-0">
+                            <span class="s">Вы уверены, что хотите <null id="RF2">заморозить</null> <null id="RF5">null</null>?</span><br>
+                            <button id="RF3" class="btn btn-bordred-warning mt-1">Заморозить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/modules/load-style.js"></script>
+        <%- include('../modules/invite') %>
+        <%- include('../modules/waiting') %>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <%- include('../modules/discord') %>
+        <%- include('../modules/profile') %>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="/js/modules/date-convert.js"></script>
+        <script src="/js/settings/RoleFreeze.js"></script>
+        <script src="/js/etc/load-ra-logs.js"></script>
+        <script src="/js/etc/users.js"></script>
+    </body>
+</html>

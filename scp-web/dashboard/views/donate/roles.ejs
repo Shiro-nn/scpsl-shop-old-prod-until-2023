@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html style="background-color: #18191c;">
+<head>
+    <meta charset="UTF-8">
+    <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Готовые Роли', metaDesc:'Готовые Роли'}) %>
+
+    <link rel="stylesheet" href="/donate/css/roles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet">
+    <link href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/fonts/neons/style.css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/fonts/Nunito/style.css">
+</head>
+<body>
+    <%- include('../modules/socketInit') %>
+    <%- include('../modules/header') %>
+    <%- include('./selector.ejs') %>
+    <div class="content">
+        <div class="donates">
+            <div class="item" data-id="9">
+                <h2 style="color: #34db88;">Благодетель</h2>
+                <h1 style="color: #34db88;">Б</h1>
+                <p class="donateCount">?</p>
+                <a class="buyDonate">Приобрести</a>
+            </div>
+            <div class="item" data-id="1">
+                <h2 class="rainbow">Солнцеликий</h2>
+                <h1 class="rainbow">С</h1>
+                <p class="donateCount">?</p>
+                <a class="buyDonate">Приобрести</a>
+            </div>
+            <div class="item" data-id="2">
+                <h2 style="color: yellow;">Апостол</h2>
+                <h1 style="color: yellow;">А</h1>
+                <p class="donateCount">?</p>
+                <a class="buyDonate">Приобрести</a>
+            </div>
+            <div class="item" data-id="4">
+                <h2 style="color: lightgreen;">Маг</h2>
+                <h1 style="color: lightgreen;">М</h1>
+                <p class="donateCount">?</p>
+                <a class="buyDonate">Приобрести</a>
+            </div>
+            <div class="item" data-id="5">
+                <h2 style="color: red;">Пророк</h2>
+                <h1 style="color: red;">П</h1>
+                <p class="donateCount">?</p>
+                <a class="buyDonate">Приобрести</a>
+            </div>
+            <div class="item" data-id="6">
+                <h2 style="color: #f700ff;">Звездочка</h2>
+                <h1 style="color: #f700ff;">З</h1>
+                <p class="donateCount">?</p>
+                <a class="buyDonate">Приобрести</a>
+            </div>
+            <div class="item" data-id="3">
+                <h2 style="color: lightcoral;">Священник</h2>
+                <h1 style="color: lightcoral;">С</h1>
+                <p class="donateCount">?</p>
+                <a class="buyDonate">Приобрести</a>
+            </div>
+            <div class="item" data-id="7">
+                <h2 style="color: #1997ff;">Патриарх</h2>
+                <h1 style="color: #1997ff;">П</h1>
+                <p class="donateCount">?</p>
+                <a class="buyDonate">Приобрести</a>
+            </div>
+        </div>
+        <p class="warningDonate">Донат ограничивается Анти-Абузом, его здесь не отбирают.</p>
+        <p class="warningDonate">На Medium RP работает только Солнцеликий, Градиент и множитель опыта у Апостола.</p>
+        <div class="donates_desc">
+            <div class="item">
+                <div class="title"><span class="rainbow">Особенности Солнцеликого</span></div>
+                <p>
+                    Выдает роль, переливающеюся всеми цветами радуги, а также активирует ваш собственный префикс из настроек аккаунта.
+                </p>
+            </div>
+            <div class="item">
+                <div class="title"><span style="color: yellow;">Особенности Апостола</span></div>
+                <p>
+                    Золотой ник в мини-профиле.
+                    <br>Золотые сообщения в игровом чате.
+                    <br>Множитель опыта.
+                    <br>Увеличенное на 10% хп.
+                    <br>Безлимитная рация.
+                    <br>Увеличенный заряд MicroHID'а.
+                </p>
+            </div>
+            <div class="item">
+                <div class="title"><span style="color: #98ff98;">Особенности Мага</span></div>
+                <p>
+                    Доступ к смене роли
+                    <br>Доступ к выдаче предметов
+                </p>
+            </div>
+            <div class="item">
+                <div class="title"><span style="color: #dc143c;">Особенности Пророка</span></div>
+                <p>
+                    Доступ к смене роли
+                    <br>Доступ к выдаче предметов
+                    <br>Доступ к эффектам
+                    <br>Доступ к просмотру игроков
+                </p>
+            </div>
+            <div class="item">
+                <div class="title"><span style="color: #f700ff;">Особенности Звездочки</span></div>
+                <p>
+                    <p>
+                        Доступ к смене роли
+                        <br>Доступ к выдаче предметов
+                        <br>Доступ к эффектам
+                        <br>Доступ к просмотру игроков
+                        <br>Доступ к спавну отрядов
+                        <br>Фиолетовое свечение
+                    </p>
+                </p>
+            </div>
+            <div class="item">
+                <div class="title"><span style="color: #ff9898;">Особенности Священника</span></div>
+                <p>
+                    Доступ к смене роли
+                    <br>Доступ к спавну отрядов
+                    <br>Нимб над головой
+                    <br>Золотое свечение
+                    <br>Возможность создавать своих последователей
+                    <br>Возможность призвать истинного Бога:
+                    <br>Команда .priest в консоли на [ё] - стать игровым Священником
+                    <br>Команда .pray - начать призыв
+                </p>
+            </div>
+            <div class="item">
+                <div class="title"><span style="color: #1997ff;">Особенности Патриарха</span></div>
+                <p>
+                    Доступ к спавну за Длань (Выберите Tutorial)
+                    <br>Доступ к спавну за Хакеров ПХ (Выберите Chaos Riffleman)
+                    <br>Доступ к смене роли
+                    <br>Доступ к выдаче предметов
+                    <br>Доступ к просмотру игроков
+                    <br>Доступ к спавну отрядов
+                </p>
+            </div>
+            <div class="item">
+                <div class="title"><span style="color: #1997ff;">Особенности Благодетеля</span></div>
+                <p>
+                    Все функции <span style="color: #1997ff;">Патриарха</span> на NoRules.<br>
+                    <i>Секретный</i> донат на NoRules и Medium RP. Настройка будет доступна во вкладке "Информация".
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="confirmBuy" data-dName="none">
+        <div class="title">
+            <h2>Покупка <span id="donateName">?</span></h2>
+            <i class="fa-solid fa-xmark" id="closeConfirmBuy"></i>
+        </div>
+        <hr>
+        <div class="description">
+            <p>С вашего баланса будет списано <span id="donateCount">?</span></p>
+            <label for="selectDuration">Выберите длительность:</label>
+            <select class="selectDuration">
+                <option>1 месяц</option>
+                <option>3 месяца</option>
+                <option>6 месяцев</option>
+            </select>
+            <p class="economy">Экономия составит: <span id="moneyEconomy" style="color: lime;"></span></p>
+            <button id="donateBuy">Приобрести</button>
+        </div>
+    </div>
+
+    <script src="/donate/js/roles.js"></script>
+    <script src="/js/modules/steam-alert.js"></script>
+</body>
+</html>

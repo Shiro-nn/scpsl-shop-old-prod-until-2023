@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html style="background-color: #0c0d13;">
+<head>
+<title>fydne // Оплата</title>
+<link rel="stylesheet" href="<%=cdn_host%>/scpsl/fonts/Nunito/style.css">
+<link rel="stylesheet" href="<%=cdn_host%>/scpsl/fonts/neons/style.css">
+<style>
+html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+}
+* {
+    scrollbar-color: #e66465 transparent;
+    scrollbar-width: thin;
+}
+::selection {
+    color: #e66465;
+    background: #00000040;
+}
+body {
+    display: flex;
+    flex-direction: column;
+
+    word-break: break-word;
+    overflow-x: hidden;
+    
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Nunito', sans-serif;
+}
+
+header {
+    height: clamp(3.25rem, 1.75rem + 1.875vw, 4rem);
+    max-width: clamp(60rem, 40rem + 25vw, 70rem);
+
+    padding-inline: clamp(1.75rem, 1.25rem + .625vw, 2rem);
+    margin-block-start: clamp(1.125rem, .875rem + .3125vw, 1.25rem);
+    
+    gap: clamp(.875rem, .625rem + .3125vw, 1rem);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-column: full-width;
+    justify-content: space-between;
+
+    position: fixed;
+    z-index: 666;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgb(12 13 19 / .25);
+    background: linear-gradient(42deg, rgb(0 0 0 / 20%), rgb(0 0 0 / 40%));
+    backdrop-filter: blur(12px);
+    /* box-shadow: 0 10px 30px 0 rgba(30, 42, 68, 0.4); */
+    border: 1px solid #e66465;
+    box-shadow: 0 0 20px 0 #e66465;
+    
+    width: min(100%, 90vw);
+    border-radius: 9999px;
+}
+header *:focus {
+    outline: 2px solid #e66465;
+    outline-offset: 2px;
+}
+
+header a.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(.4375rem, .3125rem + .1563vw, .5rem);
+
+    padding: 5px;
+    font-family: 'NeonOL';
+    font-size: 32px;
+    line-height: 35px;
+    text-align: center;
+    user-select: none;
+
+    background-color: #ce54f3;
+    background-image: linear-gradient(155deg, #ff2323, #d445ff);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    flex-shrink: 0;
+    border-radius: clamp(.875rem, .625rem + .3125vw, 1rem);
+
+    color: aliceblue;
+    text-decoration: unset;
+    transition: color .15s ease, background-color .15s ease;
+}
+
+header .panels {
+    display: flex;
+}
+header .panels a {
+    color: aliceblue;
+    text-decoration: none;
+    border-radius: 8px;
+    
+    margin: 0 5px;
+    padding: 5px;
+    font-family: 'Nunito';
+    font-size: 22px;
+    line-height: 35px;
+    text-align: center;
+    user-select: none;
+}
+
+@media screen and (max-width: 1279px) {
+    body {
+        --content-min-width: 43rem;
+        --content-max-width: 100%;
+        --content-current-width: 13.75rem + 60.9375vw;
+        --breakout-max-width: 72.5rem;
+    }
+}
+@media screen and (max-width: 1023px) {
+    header {
+        grid-column: content;
+        padding-inline: clamp(1.25rem, 1.1364rem + .5682vw, 1.5rem);
+    }
+}
+@media screen and (max-width: 767px) {
+    body {
+        --base-padding-inline: clamp(.5rem, -.2143rem + 3.5714vw, 1.5rem);
+        --fluid-content-width: calc(100% - 2* var(--base-padding-inline));
+        --breakout-column: 0px;
+        
+        padding-bottom: 4rem;
+    }
+    header {
+        gap: clamp(.625rem, .375rem + .3125vw, .75rem);
+        justify-content: space-between;
+        padding-inline: clamp(.625rem, .375rem + .3125vw, .75rem);
+        margin-block-start: clamp(.4375rem, .3125rem + .1563vw, .5rem);
+    }
+}
+
+background {
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    
+    width: 100%;
+    height: clamp(20vh, 700px, 90vh);
+
+    /*background-image: linear-gradient(#e66465, #9198e5);*/
+    background-image: linear-gradient(42deg, rgba(48, 236, 195, 0.1) 0%, rgba(231, 219, 50, 0.1) 25%, rgba(238, 45, 158, 0.1) 50%, rgba(175, 43, 236, 0.1) 75%, rgba(37, 109, 243, 0.1) 100%);
+
+    user-select: none;
+    pointer-events: none;
+}
+background hider {
+    display: flex;
+    
+    width: 100vw;
+    height: 10%;
+
+    background: linear-gradient(to bottom, #0000, #0c0d13 100%);
+    backdrop-filter: blur(12px);
+
+    user-select: none;
+    pointer-events: none;
+}
+
+.errored{
+    position: fixed;
+    border-radius: max(30px, 1.5625vw);
+    width: calc(max(768px, 40vw) - calc(min(max(30px, 2.778vh), max(30px, 1.5625vw)) * 2));
+    height: calc(min(max(540px, 50vh), 90vh) - calc(min(max(30px, 2.778vh), max(30px, 1.5625vw)) * 2));
+    background: linear-gradient(to top right, #31363b36, #403a4649);
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: min(max(30px, 2.778vh), max(30px, 1.5625vw));
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    user-select: none;
+    text-align: center;
+    margin: 0;
+}
+.icon{
+    width: 100%;
+    height: 90%;
+}
+.icon div{
+    width: 100%;
+    height: 95%;
+    position: relative;
+}
+.icon svg{
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.icon svg g{
+    fill: url('#logo-gradient');
+}
+.errored label{
+    color: aliceblue;
+    width: 100%;
+    height: 10%;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">fydne</a>
+        <div class="panels">
+            <a href="/profile">Профиль</a>
+            <a href="/donate">Донат</a>
+        </div>
+    </header>
+
+    <background><hider></hider></background>
+
+    <div class="errored">
+        <div class="icon">
+            <div>
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+                preserveAspectRatio="xMidYMid meet">
+
+                <defs>
+                    <linearGradient id="logo-gradient" x1="100%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#f53d3d">
+                        <animate attributeName="stop-color" values="#f53d3d; #f129bf; #f53d3d" dur="6s" repeatCount="indefinite"></animate>
+                        </stop>
+                        <stop offset="100%" stop-color="#f129bf">
+                        <animate attributeName="stop-color" values="#f129bf; #f53d3d; #f129bf" dur="6s" repeatCount="indefinite"></animate>
+                        </stop>
+                    </linearGradient>
+                </defs>
+                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
+                <path d="M2425 4890 c-249 -39 -474 -182 -614 -389 -47 -69 -1677 -2893 -1718
+                -2976 -142 -284 -115 -636 68 -906 123 -182 311 -314 529 -371 l85 -23 1770 0
+                c1898 0 1820 -2 1967 50 135 48 228 108 332 211 82 82 134 156 187 267 63 133
+                82 219 82 382 0 163 -19 249 -82 381 -37 77 -1605 2801 -1700 2953 -95 153
+                -273 307 -418 361 -152 57 -349 81 -488 60z m215 -411 c120 -19 240 -89 308
+                -181 45 -60 1669 -2870 1713 -2963 69 -145 53 -329 -41 -474 -76 -119 -210
+                -202 -355 -221 -54 -7 -624 -10 -1760 -8 l-1680 3 -67 23 c-276 93 -419 406
+                -304 665 20 46 1623 2828 1694 2942 79 126 243 217 402 224 14 0 54 -4 90 -10z"/>
+                <path d="M2496 3455 c-84 -22 -148 -82 -187 -175 -18 -46 -17 -110 10 -555 12
+                -203 28 -465 35 -581 15 -254 25 -281 115 -326 62 -32 105 -35 159 -12 86 36
+                132 118 132 233 -1 31 14 309 32 618 36 619 36 614 -23 699 -56 82 -173 124
+                -273 99z"/>
+                <path d="M2490 1601 c-121 -39 -197 -148 -188 -268 11 -144 115 -242 257 -243
+                102 0 186 52 233 144 26 50 29 163 6 217 -22 50 -74 107 -122 131 -44 22 -145
+                33 -186 19z"/>
+                </g>
+                </svg>
+            </div>
+        </div>
+        <label>Произошла ошибка при создании оплаты</label>
+    </div>
+</body>
+</html>

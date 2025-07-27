@@ -1,0 +1,25 @@
+{
+  "name": "cdn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cdn.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "content-type": "^1.0.4",
+    "cors": "^2.8.5",
+    "execa": "^5.0.0",
+    "express": "^4.18.2",
+    "gifsicle": "^5.2.0",
+    "image-size": "^0.9.7",
+    "imagemin": "^7.0.1",
+    "is-gif": "^3.0.0",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "raw-body": "^2.4.2"
+  }
+}

@@ -1,0 +1,138 @@
+body {
+margin: 0;
+padding: 0;
+}
+#map {
+position: absolute;
+top: 0;
+bottom: 0;
+width: 100%;
+}
+.marker {
+background-color: rgba(88, 88, 88, 0.5);
+background-size: cover;
+width: 30px;
+height: 30px;
+border-radius: 50%;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.marker span {
+color: #fff;
+font-size: 18px;
+}
+.mapboxgl-popup {
+max-width: 200px;
+}
+.mapboxgl-popup-content {
+text-align: center;
+font-family: 'Open Sans', sans-serif;
+}
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl{
+margin-top: 70px !important;
+margin-right: 0px !important;
+cursor: url(/cursors/red/pointer.cur), pointer !important;
+}
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl *{
+    cursor: url(/cursors/red/pointer.cur), pointer !important;
+}
+#servers {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    min-height: 10px;
+    min-width: 100px;
+    color: aliceblue;
+    background: #404040bf;
+    padding: 5px;
+    border-radius: 8px;
+    max-height: 500px;
+    overflow-y: auto;
+    z-index: 666;
+}
+#servers a, #rangeBlock a {
+    border: 1px solid lime;
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 5px;
+}
+#rangeArea {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    background: #404040;
+    display: flex;
+    flex-direction: column;
+    z-index: 6;
+    padding-top: 80px;
+}
+#rangeBlock {
+    width: 100%;
+    height: calc(100% - 30px);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#rangeArea #rangeCords, #rangeArea #rangeServer {
+    width: 100%;
+    font-size: 16px;
+    padding: 5px;
+    height: 30px;
+    background: #404040;
+    color: aliceblue;
+}
+#rangeArea #rangeServer {
+    display: flex;
+    justify-content: space-between;
+}
+#rangeArea #rangeServer button {
+    border: 0;
+    height: 100%;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    color: #282e38;
+    background-color: lime;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+#rangeArea #rangeServer button {
+    border: 0;
+    height: 100%;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    color: #282e38;
+    background-color: lime;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.rangerMarker {
+    width: 32px;
+    height: 32px;
+    top: -16px !important;
+    background-image: url('/img/pointer.png');
+}
+.rangerServerMarker {
+    width: 16px;
+    height: 16px;
+    top: -8px !important;
+    background-image: url('/img/server.png');
+}

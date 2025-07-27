@@ -1,0 +1,15 @@
+.img{
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #3b4452;
+    border-color: #434e5e;
+    border: 5px solid #434e5e;
+    background-size: cover;
+    background-position: 50%;
+}
+.dropdown w{
+    cursor: url(/cursors/red/select.cur), text;
+}

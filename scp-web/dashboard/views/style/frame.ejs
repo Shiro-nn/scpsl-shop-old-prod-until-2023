@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Стили', metaDesc:'Стили'}) %>
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/card.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <%- include('../modules/socketInit') %>
+        <%- include('../modules/header') %>
+        <div id="wrapper">
+            <div class="content-page">
+                <div class="container">
+                    <div class="list wrapper wrapper--content">
+                        <br>
+                        <div class="card-container">
+                            <% sdata.forEach(async function(stl) { %>
+                                <div class="card" data-filter-themes="<%= stl.name %>" data-tags="addon">
+                                    <a class="card__real-link" href="/style/see/<%= stl.link %>"></a>
+                                    <div class="card__head">
+                                        <img class="card__img ls-is-cached lazyloaded" data-src="<%= stl.imgs[0] %>" src="<%= stl.imgs[0] %>">
+                                        <div class="card__stats">
+                                            <span class="card__stat" aria-label="<%= stl.use %> установили" data-balloon-pos="up">
+                                                <i class="fa-solid fa-download"></i> <%= stl.use %>
+                                            </span>
+                                            <% if(stl.official) { %>
+                                            <span class="card__stat" aria-label="<%= stl.views %> просмотров" data-balloon-pos="up">
+                                                <i class="fa-solid fa-eye"></i> <%= stl.views %>
+                                            </span>
+                                            <span class="card__stat card__stat--green" aria-label="Официальный стиль" data-balloon-pos="up-right">
+                                                <i class="fa-solid fa-check"></i>
+                                            </span>
+                                            <% }else{ %>
+                                            <span class="card__stat" aria-label="<%= stl.views %> просмотров" data-balloon-pos="up-right">
+                                                <i class="fa-solid fa-eye"></i> <%= stl.views %>
+                                            </span>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="card__info">
+                                        <h2 class="card__title"><%= stl.name %></h2>
+                                        <div class="card__authors">
+                                            <small class="card__by">от</small>
+                                            <span class="card__author">
+                                                <a class="card__author-link style_username" id="@<%= stl.author %>">@<%= stl.author %></a>
+                                            </span>
+                                        </div>
+                                        <p class="card__desc md_change"><%= stl.desc %></p>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br><br><br><br>
+        <script src="/js/modules/load-style.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/md.js"></script>
+        <script src="/js/etc/style.js"></script>
+        <script src="/js/etc/md.js"></script>
+        <%- include('../modules/profile') %>
+        <%- include('../modules/invite') %>
+    </body>
+</html>

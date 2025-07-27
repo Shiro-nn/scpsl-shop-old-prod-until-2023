@@ -1,0 +1,4 @@
+html, .dms6, .dmb3{cursor: url(/cursors/red/standart.cur), default;}
+button, .pn7, .nf3, .dmu8{cursor: url(/cursors/red/pointer.cur), pointer;}
+.pn3, .pn3 *, .dmu3, .dmu3 *, .dmu7 .fa-user-gear, .dmu7 .fa-user-gear *, .dmu7 .fa-user-minus, .dmu7 .fa-user-minus *{cursor: url(/cursors/red/pointer.cur), pointer !important;}
+.cs10, .dmc8, .dmu9 span{cursor: url(/cursors/red/select.cur), text;}

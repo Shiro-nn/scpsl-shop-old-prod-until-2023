@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Восстановление пароля', metaDesc:'Восстановление пароля'}) %>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/authorization/reset.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body>
+        <%- include('../modules/socketInit') %>
+        <div class="reset">
+            <div class="wrap">
+                <div class="user">
+                    <div class="logo">
+                        <span>f</span>
+                    </div>
+                    <div class="form-wrap">
+                    	<div class="tabs-content">
+                    		<div id="login-tab-content" class="active">
+                                <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Новый пароль">
+                                <input type="submit" id="reset_password" class="button" value="Изменить">
+                    		</div>
+                    	</div>
+                        <span class="mssg"></span>
+                	</div>
+                </div>
+            </div>
+        </div>
+        <%- include('../modules/waiting') %>
+        <script src="/auth/js/main.js"></script>
+        <script src="/auth/js/render/reset/main.js"></script>
+        <%- include('../modules/invite') %>
+    </body>
+</html>

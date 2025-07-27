@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Профиль', metaDesc:'Профиль'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/etc/fonts.css">
+        <link rel="stylesheet" href="/css/etc/croppie.css">
+        <link rel="stylesheet" href="/css/etc/profile.css">
+        <link rel="stylesheet" href="/css/etc/rainbow.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <%- include('../modules/socketInit') %>
+        <a id="load_data" style="display: none;" onclick="cdn_host = '<%= cdn_host %>';"></a>
+        <div id="wrapper">
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <div class="content-page">
+                <div id="main_ds">
+                    <div class="z0">
+                        <div class="z1">
+                            <div class="z2">
+                                <div class="z3">
+                                    <div class="z4">
+                                        <div id="avatar" class="z5">
+                                            <div class="z6" onclick="FileLoad();">Изменить<br>аватар</div>
+                                            <input id="f1" class="f1" type="file" tabindex="0" multiple="" accept=".jpg,.jpeg,.png,.webp" aria-label="Изменить аватар">
+                                            <div class="z8" onclick="FileLoad();"></div>
+                                        </div>
+                                    </div>
+                                    <div class="z9">
+                                        <div class="z10"><span class="z11" id="profile.username"></span></div>
+                                        <div class="z22" id="profile.achievements"></div>
+                                    </div>
+                                </div>
+                                <div class="z12">
+                                    <div class="z13">
+                                        <div class="z14">
+                                            <div class="z15">
+                                                <h5 class="z16">Баланс</h5>
+                                                <div>
+                                                    <span class="z17" id="profile.balance">?₽</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="z18 rainbow_border" onclick="document.querySelector('#balanceup .balance').click()"><div class="z19">Пополнить</div></button>
+                                    </div>
+                                    <div class="z13 z20">
+                                        <div class="z14">
+                                            <div class="z15">
+                                                <h5 class="z16">ID</h5>
+                                                <div>
+                                                    <span class="z17" id="profile.uid">0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="z18" id="profile.uid.click"><div class="z19">Скопировать</div></button>
+                                    </div>
+                                    <div class="z13 z20">
+                                        <div class="z14">
+                                            <div class="z15">
+                                                <h5 class="z16">Discord</h5>
+                                                <div><a class="c15" id="profile.discord.user">@Invalid User</a></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="z18" id="logindiscord"><div class="z19" id="profile.discord.click">Привязать</div></button>
+                                    </div>
+                                    <div class="z13 z20">
+                                        <div class="z14">
+                                            <div class="z15">
+                                                <h5 class="z16">SteamID64</h5>
+                                                <div><span class="z17" id="profile.steam.id">Не привязан</span></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="z18" id="loginsteam"><div class="z19" id="profile.steam.click">Привязать</div></button>
+                                    </div>
+                                    <div class="z13 z20">
+                                        <div class="z14">
+                                            <div class="z15">
+                                                <h5 class="z16">Префикс</h5>
+                                                <div>
+                                                    <input class="z17 z21" type="text" id="profile.prefix" autocomplete="off" maxlength="20">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="z18" id="pref_update"><div class="z19">Обновить</div></button>
+                                    </div>
+                                    <div class="z13 z20">
+                                        <div class="z14">
+                                            <div class="z15">
+                                                <h5 class="z16">Публичный ник</h5>
+                                                <div>
+                                                    <input class="z17 z21" type="text" id="profile.name.setter" maxlength="25" autocomplete="off">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="z18" id="name_update"><div class="z19">Обновить</div></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="z25"></div>
+                        <div class="z26">
+                            <div class="z27">
+                                <h1 class="z28">
+                                    <div class="z29">Настройка профиля</div>
+                                </h1>
+                            </div>
+                            <div class="z30">
+                                <div class="z31">
+                                    <div class="z32">
+                                        <div class="z33">
+                                            <h5 class="z34">Баннер профиля</h5>
+                                            <div class="z35">
+                                                <p>Рекомендуемый минимальный размер - 300x120, а рекомендуемое соотношение сторон - 5:2.</p>
+                                            </div>
+                                            <button class="z36">
+                                                <div class="z37">Загрузить баннер профиля</div>
+                                            </button>
+                                            <button class="z48" id="profile.banner.delete">
+                                                <div class="z37">Удалить баннер профиля</div>
+                                            </button>
+                                        </div>
+                                        <div class="z38">
+                                            <div class="z39">
+                                                <div class="z40">
+                                                    <div class="z41">
+                                                        <div class="z42"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="z43">
+                                                    <img class="z46" aria-hidden="true" id="profile.avatar.in.banner">
+                                                </div>
+                                                <div class="z47"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <input id="f2" class="f2" type="file" tabindex="0" multiple="" accept=".jpg,.jpeg,.png,.gif,.webp,.ico">
+                    <div class="q1" style="display: none;">
+                        <div class="q2">
+                            <div class="q3" role="dialog" aria-labelledby="uid_3704" tabindex="-1" aria-modal="true">
+                                <div class="q4">
+                                    <div id="upload"></div>
+                                    <div id="cr-boundary" class="v1" style="display: none;">
+                                        <div class="cr-boundary" aria-dropeffect="none">
+                                            <img id="select_avatar" height="400px">
+                                        </div>
+                                    </div>
+                                    <div class="q5">
+                                        <button type="button" class="q6">
+                                            <div class="q7">Отмена</div>
+                                        </button>
+                                        <button type="button" class="q8">
+                                            <div class="upload-result">Сохранить</div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m1" style="display: none;">
+                        <div class="m2">
+                            <div class="m3" role="dialog" aria-labelledby="uid_3704" tabindex="-1" aria-modal="true">
+                                <div class="m4">
+                                    <div id="uploadLogo"></div>
+                                    <div id="cr-boundaryLogo" style="display: none;">
+                                        <div class="cr-boundary" aria-dropeffect="none">
+                                            <img id="selectLogo" height="400px">
+                                        </div>
+                                    </div>
+                                    <div class="m5">
+                                        <button type="button" class="m6">
+                                            <div class="m7">Отмена</div>
+                                        </button>
+                                        <button type="button" class="m8">
+                                            <div class="uploadLogo">Сохранить</div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+        </div>
+        <script src="/js/modules/load-style.js"></script>
+        <%- include('../modules/invite') %>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <%- include('../modules/discord') %>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/exif.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/croppie.js"></script>
+        <script src="/js/render/profile.js"></script>
+		<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.scale.css"/>
+		<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.perspective.css"/>
+		<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.themes.translucent.css"/>
+		<script src="<%= cdn_host %>/scpsl/js/popper.min.js"></script>
+		<script src="<%= cdn_host %>/scpsl/js/tippy-bundle.umd.js"></script>
+    </body>
+</html>

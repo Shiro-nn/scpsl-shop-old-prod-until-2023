@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%- include('./modules/meta', {embedName:'fydne', metaTitle:'fydne', metaDesc:'fydne - уникальный проект со своими плагинами, тёплым комьюнити и хорошей администрацией'}) %>
+
+    <link rel="stylesheet" href="/css/instyle.css">
+    <link rel="stylesheet" href="/css/index_two.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <style>:root{--image: url('<%= cdn_host %>/scpsl/img/etc/serverlogo.webp')}</style>
+    <script>const _cdn_host = '<%=cdn_host%>';</script>
+  </head>
+  <body translate="no">
+    <%- include('./modules/socketInit') %>
+    <%- include('./modules/header') %>
+    <div id="mainall">
+        <module class="video">
+            <img id="trailer_audio" width="30px" height="30px" src="<%= cdn_host %>/scpsl/img/index/volume-xmark-solid.svg">
+            <img id="trailer_full" width="30px" height="30px" src="<%= cdn_host %>/scpsl/img/index/expand-solid.svg">
+            <video id="vid.trailer">
+                <source src="<%= cdn_host %>/scpsl/trailers/SerpentsHand_optimize.mp4" type="video/mp4">
+            </video>
+        </module>
+        <section id="main">
+            <div class="about">
+                <h1 class="project">fydne</h1>
+                <p id="text1">Уникальный проект со своими плагинами,<br>тёплым комьюнити и хорошей администрацией</p>
+                <a class="btn" onclick="document.location = '/info'">Профиль</a>
+            </div>
+            <img class="scroll-indicator" src="<%= cdn_host %>/scpsl/img/index/arrow-down-solid.svg">
+        </section>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="mod one">
+                <div style="margin-top: 80px;">
+                    <h1 class="heading fs120">Плагины</h1>
+                    <p class="desc">Умеренное количество плагинов, которые не дадут вам заскучать.<br>А также уникальные плагины, которые имеются только у нас</p>
+                </div>
+            </div>
+            <div class="mod two">
+                <div class="row img-title-top">
+                    <img src="<%= cdn_host %>/scpsl/img/index/one.webp" alt="" class="img-fluid i1">
+                </div>
+            </div>
+            <div class="mod four">
+                <div style="margin-top: 80px;">
+                    <h1 class="heading fs100">Администрация</h1>
+                    <p class="desc">Добрая и адекватная администрация, не мешающая игровому процессу, да, даже на NoRules серверах.<br>Перед поступлением на должность, возможно будущий администратор проходит собеседование.</p>
+                </div>
+            </div>
+            <div class="mod three" style="margin-top: 100px;">
+                <div class="row img-title-top">
+                    <img src="<%= cdn_host %>/scpsl/img/index/two.webp" alt="" class="img-fluid i2">
+                </div>
+            </div>
+            <div class="mod five">
+                <div style="margin-top: 80px;">
+                    <h1 class="heading fs120">Анти Абуз</h1>
+                    <p class="desc">Анти Абуз, не позволяющий превышать свои права как донатерам, так и администрации проекта</p>
+                </div>
+            </div>
+            <div class="mod six">
+                <div class="row img-title-top" style="margin-top: 80px;">
+                    <img src="<%= cdn_host %>/scpsl/img/index/three.webp" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <script src="/js/etc/trailers.js"></script>
+    <%- include('./modules/invite') %>
+  </body>
+</html>

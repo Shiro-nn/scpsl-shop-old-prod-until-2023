@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru" style="background-color: #0D1117">
+    <head>
+        <meta name="author" content="DaNoNe && fydne">
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Список кланов', metaDesc:'Найдите свой любимый клан'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/clans/list.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <%- include('../modules/socketInit') %>
+        <div id="wrapper">
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="content-clans">
+                        <div class="clans-list-user">
+                            <h1 class="h1-text">Ваши кланы</h1>
+                            <p>
+                                <input type="search" placeholder="Поиск по вашим кланам" class="clans-list-page-search"> 
+                            </p>
+                            <div class="clans-area"><div id="list.my"></div></div>
+                        </div>
+                        <div class="clans-list-page">
+                            <h1 class="h1-text">Список доступных кланов</h1>
+                            <p>
+                                <input type="search" placeholder="Поиск по публичным кланам" class="clans-list-page-search"> 
+                            </p>
+                            <div class="clans-area"><div id="list.all"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/modules/load-style.js"></script>
+        <%- include('../modules/invite') %>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="/js/clans/list.js"></script>
+    </body>
+</html>

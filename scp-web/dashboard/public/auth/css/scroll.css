@@ -1,0 +1,13 @@
+::-webkit-scrollbar{
+height: 9px;
+width: 9px;
+}
+::-webkit-scrollbar-thumb{
+background-color: var(--main-color);
+border-radius: 99px;
+}
+::-webkit-scrollbar-track{
+background-color: #18191c;
+}
+::-moz-selection{color:var(--main-color);background:#00000040;border-radius:15px}
+::selection{color:var(--main-color);background:#00000040}

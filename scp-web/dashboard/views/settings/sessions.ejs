@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" style="background-color: #0D1117">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne | Сессии', metaTitle:'fydne | Сессии', metaDesc:'Здесь вы можете посмотреть активные сессии вашего аккаунта.'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/etc/sessions.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<%=cdn_host%>/scpsl/fonts/Nunito/style.css">
+    </head>
+    <body>
+        <body class="topbar-dark left-side-menu-dark pace-done">
+            <%- include('../modules/socketInit') %>
+            <div id="wrapper">
+                <%- include('../modules/header') %>
+                <%- include('../modules/panel') %>
+                <div class="content-page">
+                    <div class="spinner1"></div>
+                    <div class="sessions"></div>
+                </div>
+            </div>
+            <%- include('../modules/invite') %>
+            <script src="/js/modules/load-style.js"></script>
+            <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.scale.css"/>
+            <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.perspective.css"/>
+            <script src="<%= cdn_host %>/scpsl/js/popper.min.js"></script>
+            <script src="<%= cdn_host %>/scpsl/js/tippy-bundle.umd.js"></script>
+            <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+            <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+            <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+            <script src="/js/render/sessions.js"></script>
+        </body>
+    </body>
+</html>

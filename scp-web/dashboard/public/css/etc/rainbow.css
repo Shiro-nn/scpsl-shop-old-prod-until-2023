@@ -1,0 +1,49 @@
+
+.rainbow {
+    background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+    background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+    color:transparent !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: animatedBackground 5s linear infinite;
+    -moz-animation: animatedBackground 5s linear infinite;
+    -webkit-animation: animatedBackground 5s linear infinite;
+    -ms-animation: animatedBackground 5s linear infinite;
+    -o-animation: animatedBackground 5s linear infinite;
+}
+@keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+@-moz-keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+@-webkit-keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+@-ms-keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+@-o-keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+.rainbow_border {
+    --angle: 0deg;
+    border: 2px solid;
+    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+    animation: 2s rotate linear infinite;
+}
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}

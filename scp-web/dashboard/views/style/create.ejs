@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Создать стиль', metaDesc:'Создать стиль'}) %>
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/etc/style_manager.css" media="screen">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark pace-done">
+        <div id="wrapper">
+            <%- include('../modules/socketInit') %>
+            <%- include('../modules/header') %>
+            <%- include('../modules/panel') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-box card-border">
+                                    <h4 class="header-title mt-0 mb-4">Создать стиль</h4>
+                                    <div class="col-12 mb-2">
+                                        <label>Название</label>
+                                        <input type="text" id="style_name" class="form-control" style="cursor: url(/cursors/red/select.cur), auto;">
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label>Описание</label>
+                                        <textarea type="text" id="style_desc" class="form-control" style="cursor: url(/cursors/red/select.cur), auto;"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <p><input type="checkbox" style="cursor: url(/cursors/red/pointer.cur), auto;" id="public_access" checked>   Публичный доступ</p>
+                                        <p><input type="checkbox" style="cursor: url(/cursors/red/pointer.cur), auto;" id="link_access" checked>   Доступ по ссылке</p>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label>Код</label>
+                                        <pre id="editor"></pre>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label>Изображения (ссылкой)</label>
+                                        <a><i class="fa-solid fa-plus" aria-hidden="true" onclick='$("#imgs_add").append(`<input type="text" id="imgs" class="form-control" style="cursor: url(/cursors/red/select.cur), auto;">`)'></i></a>
+                                        <div id="imgs_add">
+                                            <input type="text" id="imgs" class="form-control" style="cursor: url(/cursors/red/select.cur), auto;">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button id="style_create" class="btn btn-bordred-success mt-1 mb-2">Создать</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../modules/invite') %>
+        <script src="/js/modules/load-style.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/autogrow-textarea.js"></script>
+        <script src="<%= cdn_host %>/scpsl/code_editor/ace.js" charset="utf-8"></script>
+        <script src="/js/etc/style.js"></script>
+        <script src="/js/etc/style_manager.js"></script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" style="background-color: #0D1117">
+    <head>
+        <meta name="author" content="fydne">
+        <%- include('../../modules/meta', {embedName:'fydne', metaTitle:'fydne | Клановые Войны', metaDesc:'Список предстоящих Клановых Войн. Присоединяйтесь к КВ'}) %>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/clans/wars/main.css">
+        <link rel="stylesheet" href="/css/clans/wars/list.css">
+        <!--<link rel="stylesheet" href="/css/custom_style.css?fix=.css">-->
+
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/fonts/ComicSans/style.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/fonts/Spirits/style.css">
+        <script>const cdn_host = '<%=cdn_host%>';</script>
+    </head>
+    <body>
+        <%- include('../../modules/socketInit') %>
+        <%- include('../../modules/header') %>
+        <div class="content">
+            <div class="list">
+                <h1 class="zero-cw" style="display: none;">Предстоящие Клановые Войны не найдены</h1>
+                <div class="container"></div>
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.scale.css"/>
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.perspective.css"/>
+        <script src="<%= cdn_host %>/scpsl/js/popper.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/tippy-bundle.umd.js"></script>
+
+        <script src="/js/clans/wars/socket.js"></script>
+        <script src="/js/clans/wars/converts.js"></script>
+        <script src="/js/clans/wars/list.js"></script>
+    </body>
+</html>

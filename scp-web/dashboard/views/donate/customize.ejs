@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+    <%- include('../modules/meta', {embedName:'fydne', metaTitle:'fydne | Кастомизация', metaDesc:'Кастомизация'}) %>
+
+    <link rel="stylesheet" href="/css/donate/main.css">
+    <link rel="stylesheet" href="/css/donate/customize.css">
+    <link rel="stylesheet" href="/css/etc/rainbow.css">
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/colors.min.css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    </head>
+    <body style="padding-bottom: 10px;">
+        <%- include('../modules/socketInit') %>
+        <div id="wrapper">
+            <link href="/css/donate/ra.css" rel="stylesheet" type="text/css">
+            <%- include('../modules/header') %>
+            <%- include('./selector.ejs') %>
+            <div class="content">
+                <div class="content-page ml-0" style="margin-top: 140px;">
+                    <div class="content">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="blurstyle">
+                                    <div id="blur_style"></div>
+                                    <div id="blur_loader" style="display: none;"></div>
+                                    <div align="center" id="antiblur" style="display: none;"><span class="loader-11"> </span><p id="abp">Ваш запрос обрабатывается</p></div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="pos_panel js_pos_check">
+                                        <div class="r1"></div>
+                                        <div class="r3" style="color:#ff9900;top: 20px; left: 904px;"><a class="r2" id="d_click">D-Class</a></div>
+                                        <div class="r3" style="color:#e2e26d;top: 60px; left: 904px;"><a class="r2" id="s_click">Учёный</a></div>
+                                        <div class="r3" style="color:#afafa1;top: 100px; left: 904px;"><a class="r2" id="g_click">Охранник</a></div>
+                                        <div class="r3" style="color:#0074ff;top: 140px; left: 904px;"><a class="r2" id="m_click">МОГ</a></div>
+                                        <div class="r3" style="color:#1cac1c;top: 180px; left: 904px;"><a class="r2" id="c_click">Хаос</a></div>
+                                        <div class="r3" style="color:#00ff00;top: 220px; left: 904px;"><a class="r2" id="h_click">Длань Змея</a></div>
+                                        <div class="r3" style="color:#ff0f0f;top: 290px; left: 904px;"><a class="r2" id="buy_click">Приобрести</a></div>
+                                        <h1 class="r3 r2 r5">Стоимость: <sum id="cmz_sum">0</sum>₽/мес</h1>
+                                        <h1 class="r3 r2 r5 r6">Истекает:<br><expires id="this_expires">Не куплен</expires></h1>
+                                        <img src="/img/customize/genetics.webp" class="r4 r7">
+                                        <img src="/img/customize/door.png" class="r4 r8" height="570px" style="height: 570px!important; min-height: 570px!important;">
+                                        <img src="/img/customize/Class-D.webp" id="scale_img" class="r4" style="bottom: 10px; left: 170px; height: 420px;">
+                                        <div class="r3 r2 r5 r9 r10" style="top: 25px;">
+                                            <h1 style="top: 25px;">Размер вашего персонажа</h1>
+                                            <h1 id="scale_text" style="top: 50px;">100%</h1>
+                                            <input id="scale" type="range" min="85" max="115" step="1" value="100" class="r11">
+                                        </div>
+                                        <div class="r3 r2 r5 r9">
+                                            <h1>Генетика</h1>
+                                            <div class="r12">
+                                                <div class="r13 p" id="gen1">
+                                                    <span>Совместимость с адреналином</span>
+                                                    <i class="fa-solid fa-info-circle r14 left"></i>
+                                                </div>
+                                                <div class="r13 p" id="gen2">
+                                                    <span>Выброс адреналина</span>
+                                                    <i class="fa-solid fa-info-circle r14 right"></i>
+                                                </div>
+                                                <div class="r13 p" id="gen3">
+                                                    <span>Родная броня</span>
+                                                    <i class="fa-solid fa-info-circle r14 center"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: none;" class="modal fade bs-example-modal-center show donate_rules donate_overflow" id="buy_customize">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header mb-0">
+                            <h4 class="modal-title font2 txt"><cz id="buy_type">Покупка</cz> Кастомизации персонажа</h4>
+                            <i class="fa-solid fa-close pointer" aria-hidden="true" id="buy_close"></i>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12 mb-2">
+                                    <p class="ra_text txt">С вашего баланса будет списано <qq id="buy_sum">0</qq>₽</p>
+                                    <p class="ra_text txt" id="buy_type2">Покупается на месяц.</p>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-bordred-success mt-1 mb-2 buy_button" id="buy_type3">Приобрести</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/modules/load-style.js"></script>
+        <%- include('../modules/invite') %>
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+        <%- include('../modules/waiting') %>
+        <script src="<%= cdn_host %>/scpsl/js/colors.min.js"></script>
+        <script src="/js/donate/customize.js"></script>
+        <script src="/js/etc/selector.js"></script>
+		<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.scale.css"/>
+		<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.perspective.css"/>
+		<script src="<%= cdn_host %>/scpsl/js/popper.min.js"></script>
+		<script src="<%= cdn_host %>/scpsl/js/tippy-bundle.umd.js"></script>
+		<script src="/js/modules/steam-alert.js"></script>
+    </body>
+</html>

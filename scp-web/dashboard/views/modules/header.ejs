@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="/css/etc/fonts.css">
+<link rel="stylesheet" href="/css/modules/navbar.css">
+<link rel="stylesheet" href="/css/modules/balance.css">
+<script>const _header_cdn = '<%= cdn_host %>';</script>
+<div class="nn1">
+    <ul class="nn2 nn3" id="header.evmenu">
+        <li class="dropdown notification-list">
+            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" href="#">
+                <span>...</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="nn2 nn3" id="balanceup" style="display: none;">
+        <span class="balance">? ₽</span>
+    </ul>
+    <div class="logo-box invsb">
+        <a href="/" class="logo text-center invsb">
+            <span class="logo-lg invsb">
+                <h1 class="ttl" draggable="false">fydne</h1>
+            </span>
+        </a>
+    </div>
+    <ul class="nn2 menu_small_block mnl dsplnn">
+        <li class="menu_small_block dsplnn">
+            <a data-toggle="dropdown" id="show_mobile_click" role="button" aria-haspopup="false" aria-expanded="false">
+                <img src="<%= cdn_host %>/scpsl/img/etc/fydnelogo.webp" alt="" height="30vh">
+                <i class="fa-solid fa-chevron-down text-white"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-left profile-dropdown wdth250" id="show_mobile">
+                <a href="/" class="dropdown-item notify-item">
+                    <span>Главная</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="/donate" class="dropdown-item notify-item"><span>Донат</span></a>
+                <div class="dropdown-divider"></div>
+                <a href="/tps" class="dropdown-item notify-item"><span>TPS</span></a>
+                <div class="dropdown-divider"></div>
+                <a href="/clans/list" class="dropdown-item notify-item"><span>Список кланов</span></a>
+                <div class="dropdown-divider"></div>
+                <a href="/clans/create" class="dropdown-item notify-item"><span>Создать клан</span></a>
+            </div>
+        </li>
+    </ul>
+    <ul class="nn2 topnav-menu-left m-0">
+        <li></li>
+        <li><a href="/donate" class="page-title-main red">Донат</a></li>
+        <li><a href="/tps" class="page-title-main red">TPS</a></li>
+        <li><a href="/clans/list" class="page-title-main red">Кланы</a></li>
+    </ul>
+    <ul class="nn2 topnav-menu-left m-0">
+        <li>
+            <button class="button-menu-mobile disable-btn waves-effect menu_small_menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </li>
+    </ul>
+</div>
+<style>
+._services {
+    /*510px*/
+    max-height: calc(100vh - 50px - 125px - 150px - 64px - 20px);
+    overflow-y: auto;
+}
+</style>
+<div class="payment hide" id="navbarpayment">
+    <div class="clickToHide"></div>
+    <div class="window">
+        <h1>Пополнение баланса</h1>
+        <label class="sum">
+            <span style="color: #c9c9c9;">Сумма</span>
+            <input class="sumInput" type="number" min="10" max="10000" value="100">
+        </label>
+        <div class="selected">
+            <div class="method">
+                <img src="/img/pays/sbp.png">
+                <h2>СБП</h2>
+            </div>
+            <div class="info">
+                <span class="comission">Комиссия: 0%</span>
+                <span class="minsum">Минимальная сумма платежа: 100 ₽</span>
+            </div>
+        </div>
+        <div class="_services"></div>
+        <hr>
+        <h1 class="eta">Итого: <b>100</b> ₽</h1>
+        <a class="pay">Оплатить</a>
+    </div>
+</div>
+<script src="/js/modules/header.js"></script>
+<script src="/js/modules/balance.js"></script>

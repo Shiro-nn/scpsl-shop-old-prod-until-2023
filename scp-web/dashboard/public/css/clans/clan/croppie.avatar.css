@@ -1,0 +1,192 @@
+.ea1{
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: none!important;
+pointer-events: none;
+z-index: 1002;
+outline: 0;
+}
+.ea2{
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+justify-content: center;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-ms-flex-direction: column;
+flex-direction: column;
+min-height: 0;
+padding-top: 40px;
+padding-bottom: 40px;
+}
+.ea3{
+min-height: 0;
+max-width: 100%;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-ms-flex-direction: column;
+flex-direction: column;
+}
+.ea4{
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-ms-flex-direction: column;
+flex-direction: column;
+background-color: #fff;
+border-radius: 5px;
+margin: 0 auto;
+pointer-events: all;
+position: relative;
+width: 600px;
+max-height: 800px;
+min-height: 400px;
+background-color: #36393f;
+-webkit-box-shadow: 0 0 0 1px rgb(32 34 37 / 60%), 0 2px 10px 0 rgb(0 0 0 / 20%);
+box-shadow: 0 0 0 1px rgb(32 34 37 / 60%), 0 2px 10px 0 rgb(0 0 0 / 20%);
+background: rgba(0,0,0,0.5);
+box-shadow: none;
+opacity: 1;
+transform: scale(1);
+}
+.ea5{
+position: relative;
+-webkit-box-flex: 0;
+flex: 0 0 auto;
+padding: 16px;
+z-index: 1;
+overflow-x: hidden;
+border-radius: 0 0 5px 5px;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+-ms-flex-direction: row;
+flex-direction: row;
+-webkit-box-pack: end;
+-ms-flex-pack: end;
+justify-content: flex-end;
+background-color: #2f3136;
+-webkit-box-shadow: inset 0 1px 0 rgb(47 49 54 / 60%);
+box-shadow: inset 0 1px 0 rgb(47 49 54 / 60%);
+background: transparent;
+box-shadow: none;
+}
+.ea6{
+position: relative;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+justify-content: center;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+background: none;
+border: none;
+font-size: 14px;
+font-weight: 500;
+line-height: 16px;
+padding: 2px 16px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+width: auto;
+height: 32px;
+min-width: 60px;
+min-height: 32px;
+margin-right: 12px;
+border-radius: 3px;
+transition: all .3s ease-in-out;
+color: #fff;
+}
+.ea7{
+margin: 0 auto;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+transition: none;
+}
+.ea8{
+margin-top: 0.375rem!important;
+display: inline-block;
+font-weight: 400;
+text-align: center;
+vertical-align: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+border: 1px solid transparent;
+padding: 0.45rem 0.9rem;
+font-size: .9rem;
+line-height: 1.5;
+border-radius: 0.15rem;
+-webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+background-color: #10c469;
+color: #fff!important;
+border-bottom: 2px solid #0da357;
+}
+
+.croppie-container{
+position: relative;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+min-height: 0;
+-webkit-box-flex: 1;
+-ms-flex: 1 1 auto;
+flex: 1 1 auto;
+z-index: 0;
+border-radius: 5px 5px 0 0;
+padding-left: 16px;
+padding-right: 16px;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-ms-flex-direction: column;
+flex-direction: column;
+padding: 0;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+padding-right: 0px;
+}
+.cr-boundary{
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+justify-content: center;
+position: relative;
+min-height: 300px;
+height: 400px;
+max-height: 500px;
+overflow: hidden;
+margin: 0 20px;
+background-color: #000;
+border-radius: 4px;
+}

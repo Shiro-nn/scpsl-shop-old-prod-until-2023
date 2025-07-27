@@ -1,0 +1,53 @@
+<html style="background-color: #0c0d13;">
+<style>
+body {
+    display: flex;
+}
+.waiting {
+    margin: auto;
+}
+
+.waiting .loader {
+    margin: auto;
+    border-radius: 32px;
+    position: relative;
+    width: 300px;
+    height: 10px;
+    background: #00000000;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+.waiting .loader::before {
+    border-radius: 32px;
+    position: absolute;
+    content: '';
+    inset: 0;
+    background: linear-gradient(90deg, #fb0094, #00f, #0f0, #ff0, #fb0094, #00f, #0f0, #ff0, #fb0094);
+    animation: animate 20s linear infinite;
+    background-size: 500%;
+}
+
+.waiting .loader::after {
+    border-radius: 32px;
+    position: absolute;
+    content: '';
+    inset: 0;
+    background: linear-gradient(90deg, #fb0094, #00f, #0f0, #ff0, #fb0094, #00f, #0f0, #ff0, #fb0094);
+    animation: animate 20s linear infinite;
+    background-size: 500%;
+    filter: blur(20px);
+}
+
+@keyframes animate {
+    from{
+        background-position: 500% 0;
+    }
+    to{
+        background-position: 0 0;
+    }
+}
+</style>
+<div class="waiting">
+    <div class="loader"></div>
+</div>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "hubmanager",
+  "version": "0.0.0",
+  "description": "",
+  "main": "hub.js",
+  "private": true,
+  "author": "fydne",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

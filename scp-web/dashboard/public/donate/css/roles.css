@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap');
+
+
+::-webkit-scrollbar{height: 4px;width: 10px}
+::-webkit-scrollbar-thumb{background-color: #be1c6d;border-radius: 99px;}
+::-webkit-scrollbar-track{background-color: #18191c; border-radius: 99px;}
+
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: Nunito;
+    text-rendering: optimizeLegibility;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+    transition: 1.5s;
+    padding-top: 130px;
+}
+
+.donates {
+    width: 95%;
+    height: 340px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+} .donates .item {
+    width: 200px;
+    min-height: 300px;
+    background-color: #2c292aa9;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: NeonOL;
+    text-align: center;
+} .donates .item h2 {
+    font-size: 24px;
+} .donates .item h1 {
+    margin-top: 30px;
+    font-size: 72px;
+} .donates .item p {
+    margin-top: 20px;
+    background-color: #111827;
+    color: white;
+    font-size: 24px;
+    padding: 4px 40px;
+    border-radius: 20px;
+    font-family: Nunito;
+    font-style: italic;
+} .donates .item a {
+    color: red;
+    font-size: 20px;
+    margin-top: 20px;
+    font-style:oblique;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.donates_desc {
+    margin-top: 20px;
+    width: 95%;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+} .donates_desc .item {
+    width: 32%;
+    min-height: 300px;
+    background-color: #2c292aa9;
+    border-radius: 15px;
+} .donates_desc .item .title {
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #111827b9;
+    border-radius: 15px;
+    font-family: NeonOL;
+    word-spacing: 10px;
+} .donates_desc .item .title span {
+    margin-left: 20px;
+} .donates_desc .item p {
+    text-align: start;
+    color: white;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+.confirmBuy {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 30%;
+    max-height: 80%;
+    background-color: #28282e;
+    border-radius: 25px;
+    flex-direction: column;
+    animation: slideUp 1s ease-in-out forwards;
+    overflow-y: auto;
+} .confirmBuy .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 18%;
+    color: wheat;
+    padding: 0px 20px;
+    position: relative;
+} .confirmBuy .title h2 {
+    font-family: NeonOL;
+} .confirmBuy .title i {
+    position: absolute;
+    color: red;
+    right: 20px;
+    font-size: 22px;
+    cursor: pointer;
+} .confirmBuy .description {
+    height: 70%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-direction: start;
+    padding: 10px 20px;
+    font-size: 22px;
+    font-family: Comic Sans MS;
+    color: white;
+} .confirmBuy .description label {
+    margin-top: 15px;
+} .confirmBuy .description .economy {
+    display: none;
+    color: rgb(134, 134, 134);
+    margin-top: 5px;
+} .confirmBuy .description .selectDuration {
+    width: max-content;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin-top: 5px;
+    border: none;
+    border-right: 10px solid transparent;
+    border-radius: 10px;
+    background-color: #202022;
+    color: white;
+} .confirmBuy .description .selectDuration:focus {
+    outline: none;
+}
+.confirmBuy .description button {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    background-color: lime;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    border: none;
+    font-size: 20px;
+    font-family: Comic Sans MS;
+    cursor: pointer;
+}
+.confirmBuy .description button.inprogress{
+    background-color: gray;
+    cursor: wait;
+    background-image: -webkit-gradient( linear, left top, right bottom, color-stop(0, gray), color-stop(0.6, gray), color-stop(0.65, #afafaf), color-stop(0.67, gray), color-stop(1, gray), color-stop(2, gray) );
+    background-image: gradient( linear, left top, right bottom, color-stop(0, gray), color-stop(0.6, gray), color-stop(0.65, #afafaf), color-stop(0.67, gray), color-stop(1, gray), color-stop(2, gray) );
+    animation: animatedBackgroundGrey 60s linear infinite;
+    -moz-animation: animatedBackgroundGrey 60s linear infinite;
+    -webkit-animation: animatedBackgroundGrey 60s linear infinite;
+    -ms-animation: animatedBackgroundGrey 60s linear infinite;
+    -o-animation: animatedBackgroundGrey 60s linear infinite;
+}
+@keyframes animatedBackgroundGrey {
+    0% { background-position: 0; }
+    100% { background-position: 5000px; }
+}
+@-moz-keyframes animatedBackgroundGrey {
+    0% { background-position: 0; }
+    100% { background-position: 5000px; }
+}
+@-webkit-keyframes animatedBackgroundGrey {
+    0% { background-position: 0; }
+    100% { background-position: 5000px; }
+}
+@-ms-keyframes animatedBackgroundGrey {
+    0% { background-position: 0; }
+    100% { background-position: 5000px; }
+}
+@-o-keyframes animatedBackgroundGrey {
+    0% { background-position: 0; }
+    100% { background-position: 5000px; }
+}
+
+@keyframes slideUp {
+    0% {
+        top: 150%;
+    }
+    100% {
+        top: 50%;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        top: 50%;
+    }
+    100% {
+        top: 150%;
+    }
+}
+
+.rainbow {
+    background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+    background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+    color:transparent !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: animatedBackground 5s linear infinite;
+    -moz-animation: animatedBackground 5s linear infinite;
+    -webkit-animation: animatedBackground 5s linear infinite;
+    -ms-animation: animatedBackground 5s linear infinite;
+    -o-animation: animatedBackground 5s linear infinite;
+}
+@keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+@-moz-keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+@-webkit-keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+@-ms-keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+@-o-keyframes animatedBackground {
+    0% { background-position: 0; }
+    100% { background-position: 500px; }
+}
+
+ .warningDonate {
+    font-size: 22px;
+    color: white;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 960px) {
+    .donates {
+        flex-direction: row;
+        max-width: 95%;
+        overflow-x:scroll;
+        overflow-y: hidden;
+        min-height: 300px;
+        justify-content: start;
+    } .donates .item {
+        box-sizing: border-box;
+        min-width: 180px;
+    }
+    .donates_desc .item {
+        width: 90%;
+        padding-bottom: 10px;
+    }
+    .confirmBuy {
+        width: 90%;
+        height: 40%;
+    }
+    ::-webkit-scrollbar{height: 6px;width: 10px}
+}
+
+@media only screen and (min-width: 961px) and (max-width: 1530px) {
+    .donates {
+        flex-direction: row;
+        max-width: 95%;
+        overflow-x:scroll;
+        overflow-y: hidden;
+        min-height: 300px;
+        justify-content: start;
+    } .donates .item {
+        box-sizing: border-box;
+        min-width: 180px;
+    }
+    .donates_desc .item {
+        width: 45%;
+        padding-bottom: 10px;
+    }
+    .confirmBuy {
+        width: 60%;
+        height: 40%;
+    }
+    ::-webkit-scrollbar{height: 6px;width: 10px}
+}

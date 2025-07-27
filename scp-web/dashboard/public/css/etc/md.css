@@ -1,0 +1,28 @@
+.md_emoji{
+    box-sizing: border-box;
+    outline: 0;
+    font-size: .9rem;
+    line-height: 1.5;
+    color: #adb5bd00;
+    pointer-events: auto;
+    -webkit-box-direction: normal;
+    font-family: Roboto,sans-serif;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: url(/cursors/red/select.cur), text;
+    -webkit-touch-callout: auto !important;
+    -webkit-user-select: auto !important;
+    -khtml-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    user-select: auto !important;
+}
+.md_emoji_big{
+    width: 3rem;
+    height: 3rem;
+    min-height: 3rem;
+}

@@ -1,0 +1,66 @@
+body {
+margin: 0;
+padding: 0;
+}
+#map {
+position: absolute;
+top: 0;
+bottom: 0;
+width: 100%;
+}
+.marker {
+    background-color: rgba(88, 88, 88, 0.5);
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.marker span {
+    color: #fff;
+    font-size: 18px;
+}
+.mapboxgl-popup {
+max-width: 200px;
+}
+.mapboxgl-popup-content {
+text-align: center;
+font-family: 'Open Sans', sans-serif;
+}
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl{
+margin-top: 70px !important;
+margin-right: 0px !important;
+cursor: url(/cursors/red/pointer.cur), pointer !important;
+}
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl *{
+    cursor: url(/cursors/red/pointer.cur), pointer !important;
+}
+#players {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    min-height: 10px;
+    min-width: 100px;
+    color: aliceblue;
+    background: #404040bf;
+    padding: 5px;
+    border-radius: 8px;
+    max-height: 500px;
+    overflow-y: auto;
+    z-index: 666;
+
+    a {
+        border: 1px solid lime;
+        border-radius: 8px;
+        padding: 5px;
+        font-size: 16px;
+        color: white;
+        margin-bottom: 5px;
+    }
+}

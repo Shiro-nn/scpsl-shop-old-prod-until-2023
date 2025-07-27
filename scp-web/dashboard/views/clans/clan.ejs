@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru" style="background-color: #0D1117">
+<head>
+<%- include('../modules/meta', {embedName:'fydne', metaTitle:`fydne | Клан '${tag}'`, metaDesc:`fydne | Клан '${tag}'`}) %>
+</head>
+<body id="clans.viewer">
+<module id="window.loader">
+<link rel="stylesheet" href="/css/clans/clan/loader.css">
+<div class="spinner"></div>
+</module>
+<module id="socket"><%- include('../modules/socketInit') %></module>
+<module id="header"><%- include('../modules/header') %></module>
+<module id="profile"><%- include('../modules/profile') %></module>
+<module id="wait"><%- include('../modules/waiting') %></module>
+<div id="clan.image"></div>
+<module id="selector">
+    <div class="pn1">
+        <div class="pn2"></div>
+        <div class="pn5">
+            <div class="pn7">
+                <div class="pn6 fa-duotone fa-bars" id="scripts.width-to-height"></div>
+            </div>
+        </div>
+    </div>
+</module>
+<module id="notifications">
+    <div class="nf1">
+        <div class="nf2">
+            <div class="nf3">
+                <div class="nf4 fa-duotone fa-bars"></div>
+            </div>
+        </div>
+        <div class="nf5">
+            <p class="nf6">Уведомления клана</p>
+            <div class="nf7" id="clan.notifications.area"></div>
+            <button class="nf12" id="clan.notifications.load">Загрузить еще</button>
+        </div>
+    </div>
+</module>
+<module id="clan.static">
+    <div class="cs1">
+        <div class="cs2">
+            <div class="cs3" id="clan.set.avatar"></div>
+            <div class="cs4">
+                <div class="cs5"><%= tag %></div>
+                <div class="cs6 clan_color"></div>
+            </div>
+        </div>
+        <div class="cs7 clan_color"></div>
+        <div class="cs8">
+            <div class="cs9">
+                <div class="cs10" id="clan.set.name"></div>
+                <div class="cs10 cs11" id="clan.set.desc"></div>
+            </div>
+            <div class="cs16">
+                <i class="fa-light fa-money-bill"></i>
+                <span id="clan.set.balance"></span>
+            </div>
+            <div class="cs16 cs18">
+                <i class="fa-light fa-plus"></i>
+            </div>
+            <div class="cs16 cs17">
+                <span id="clan.set.money"></span>
+                <i class="fa-light fa-coins"></i>
+            </div>
+        </div>
+        <div class="cs7 clan_color" style="left:428px"></div>
+        <div class="cs12">
+            <button class="cs13" id="clan.button.join"><div class="cs14">Вступить в клан</div></button>
+            <button class="cs13" id="clan.button.leave"><div class="cs14">Покинуть клан</div></button>
+            <button class="cs13" id="clan.button.make.public"><div class="cs14">Сделать публичным</div></button>
+            <button class="cs13" id="clan.button.make.private"><div class="cs14">Сделать приватным</div></button>
+            <button class="cs13" id="clan.button.make.main"><div class="cs14">Сделать основным</div></button>
+            <button class="cs13" id="clan.button.invite"><div class="cs14">Пригласить в клан</div></button>
+        </div>
+    </div>
+</module>
+<module id="clan.dynamic">
+<div class="dm1">
+<div class="dm2">
+
+<div id="render.news" style="display: none;">
+    <div class="dm3" id="clan.news.area">
+        <div class="dm4" id="clan.news.not.delete">
+            <div class="dm5">
+                <div class="dm6">
+                    <textarea id="clan.news.textarea" disabled class="dm7" maxlength="200"></textarea>
+                    <div class="dm8" id="clan.news.send"><img class="dm9" src="<%= cdn_host %>/scpsl/img/etc/clan/send.webp"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="render.users" style="display: none;"></div>
+
+<div id="render.boosts" style="display: none;"></div>
+
+<div id="render.chat" style="display: none;">
+    <div class="dmc1">
+        <div class="dmc2">
+            <div class="dmc9">
+                <div class="dmc10">
+                    <div class="dmc666">
+                        <div class="imgArea">
+                            <img class="appImg" src="/img/clans/chat.svg">
+                        </div>
+                        <h1 class="text">Вступите в клан, чтобы увидеть сообщения</h1>
+                    </div>
+                    <div class="dmc11" id="chat.area" style="display: none;"></div>
+                    <div class="dmc12"></div>
+                </div>
+            </div>
+        </div>
+        <div class="dmc3">
+            <div class="dmc4">
+                <textarea class="dmc5" placeholder="Написать сообщение" maxlength="1000" style="height: 44px;" id="chat.textarea"></textarea>
+            </div>
+            <div class="dmc6">
+                <img class="dmc7" id="chat.edit.undo" src="<%= cdn_host %>/scpsl/img/etc/clan/undo.webp" style="display: none;">
+                <img class="dmc7" src="<%= cdn_host %>/scpsl/emojis/82ea1e1cf767.png" style="display: none;">
+                <img class="dmc7" id="chat.message.send" src="<%= cdn_host %>/scpsl/img/etc/clan/send.webp">
+            </div>
+            <div class="dmc8" id="chat.preview">Предпросмотр</div>
+        </div>
+    </div>
+</div>
+
+<div id="render.settings" style="display: none;"></div>
+
+</div>
+</div>
+</module>
+<module id="chat.menu">
+<div class="cm1" style="display: none;">
+    <div class="cm2">
+        <div class="cm3">
+            <div class="cm4">
+                <div id="chat.menu.area"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</module>
+<module id="users.menu">
+<div class="um1" style="display: none;">
+    <div class="um2">
+        <div class="um3">
+            <div class="um4">
+                <div class="um7">Изменить роль <span class="_nick"></span></div>
+                <div class="_area"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</module>
+<module id="exchequer.menu"></module>
+<module id="croppie.avatar"></module>
+<module id="needed.modules">
+<script>const tag = '<%=tag%>';</script>
+<script>const render = parseInt('<%=render%>');</script>
+<script>let highlight_loaded = false;</script>
+<style id="clan.style.color">:root{--clan-color: #ff0000;}</style>
+</module>
+<module id="scripts">
+<script src="/js/logger.js"></script>
+<script src="/js/clans/clan/_init.js"></script>
+<script lowsrc="<%= cdn_host %>/scpsl/js/highlight.min.js" onload="highlight_loaded = true;"></script>
+<script src="<%= cdn_host %>/scpsl/js/autosize.min.js"></script>
+<script src="<%= cdn_host %>/scpsl/js/colors.min.js"></script>
+<script src="<%= cdn_host %>/scpsl/js/croppie.js"></script>
+<script src="/js/modules/load-style.js"></script>
+</module>
+<module id="styles">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/etc/croppie.css">
+<link rel="stylesheet" href="/css/clans/clan/main.css">
+<link rel="stylesheet" href="/css/clans/clan/cursors.css">
+<link rel="stylesheet" href="/css/clans/clan/panel.css">
+<link rel="stylesheet" href="/css/clans/clan/notifications.css">
+<link rel="stylesheet" href="/css/clans/clan/static.data.css">
+<link rel="stylesheet" href="/css/clans/clan/news.css">
+<link rel="stylesheet" href="/css/clans/clan/users.css">
+<link rel="stylesheet" href="/css/clans/clan/boosts.css">
+<link rel="stylesheet" href="/css/clans/clan/chat.css">
+<link rel="stylesheet" href="/css/clans/clan/settings.css">
+<link rel="stylesheet" href="/css/clans/clan/chat.context.css">
+<link rel="stylesheet" href="/css/clans/clan/users.menu.css">
+<link rel="stylesheet" href="/css/clans/clan/exchequer.menu.css">
+<link rel="stylesheet" href="/css/clans/clan/croppie.avatar.css">
+<link rel="stylesheet" lowhref="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/fonts.css">
+<link rel="stylesheet" href="<%= cdn_host %>/scpsl/fonts/ComicSans/style.css">
+<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/dracula.min.css">
+<link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/colors.min.css">
+<link rel="stylesheet" href="<%=cdn_host%>/scpsl/fonts/Nunito/style.css">
+</module>
+</body>
+</html>

@@ -1,0 +1,7 @@
+::-moz-selection{color:#be1c6d;background:#00000040;border-radius:15px}
+::selection{color:#be1c6d;background:#00000040}
+
+html{cursor: url(/cursors/red/standart.cur), default;}
+button{cursor: url(/cursors/red/pointer.cur), pointer;}
+a, a *{cursor: url(/cursors/red/pointer.cur), pointer !important;}
+span{cursor: url(/cursors/red/select.cur), text;}

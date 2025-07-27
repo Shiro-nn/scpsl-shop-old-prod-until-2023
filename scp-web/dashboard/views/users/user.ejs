@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html id="html" lang="ru" translate="no">
+<head>
+    <%- include('../modules/meta', {embedName:'', metaTitle:'fydne | Пользователи', metaDesc:'Пользователи'}) %>
+    <link rel="stylesheet" href="/css/users/user.css">
+    <link rel="stylesheet" href="/css/etc/fonts.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+</head>
+<body>
+    <script>const uid = parseInt('<%- uid %>');</script>
+    <%- include('../modules/socketInit') %>
+    <%- include('../modules/header') %>
+    <div class="u0">
+        <div class="u1" role="dialog" tabindex="-1" aria-modal="true">
+            <div class="u2">
+                <div class="u3">
+                    <header class="u4">
+                        <div class="u5" role="img" aria-hidden="false" style="width: 80px; height: 80px;">
+                            <div class="u6" id="user.avatar"></div>
+                        </div>
+                        <div class="u7">
+                            <div class="u8">
+                                <span class="u9" id="user.username"></span>
+                                <span class="create_date"></span>
+                            </div>
+                            <div class="u27" id="user.achievements"></div>
+                        </div>
+                    </header>
+                </div>
+                <div class="u16">
+                    <div class="u17" dir="ltr">
+                        <div class="u18">
+                            <div class="u19" id="user.steam.element" style="display:none;">
+                                <div class="u20" style="flex: 0 1 auto;">
+                                    <img class="u21" src="<%= cdn_host %>/scpsl/img/users/steam.png">
+                                    <div class="u22">
+                                        <div class="u23">Steam</div>
+                                        <span aria-label="Проверено">
+                                            <div class="u24"></div>
+                                        </span>
+                                    </div>
+                                    <a id="user.steam.click" class="u25" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">
+                                        <svg class="u26" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24"></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.animations.perspective.css"/>
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/tippy.themes.translucent.css"/>
+    <script src="<%= cdn_host %>/scpsl/js/popper.min.js"></script>
+    <script src="<%= cdn_host %>/scpsl/js/tippy-bundle.umd.js"></script>
+    <script src="/js/users/user.js"></script>
+    <script src="/js/modules/date-convert.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+@media only screen and (max-width: 960px) {
+
+#particles{
+display: none;
+}
+.auth{
+width: 100vw;
+border-radius: 0;
+background: linear-gradient(to top right, #31363b, #453947);
+}
+.logo{
+justify-content: center;
+}
+.area{
+overflow: hidden;
+margin: auto 5%;
+}
+.inputdiv input{
+width: auto;
+width: calc(100vw - 10vw - 20px - 40px - 24px);
+}
+.content .click{
+width: calc(100% - 60px);
+}
+
+}
+
+@media only screen and (max-height: 515px) {
+.cont{
+height: calc(100vh - 90px);
+overflow-y: scroll;
+}
+}

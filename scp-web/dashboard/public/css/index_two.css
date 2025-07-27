@@ -1,0 +1,211 @@
+html{
+    background-color: #0D1117;
+}
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+::-moz-selection{color:#be1c6d;background:#00000040;border-radius:15px}
+::selection{color:#be1c6d;background:#00000040}
+.container{
+    max-width: 1200px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.heading{
+    color: red;
+    font-family: IronRussian;
+}
+.project{
+    color: red;
+    font-family: NeonOL;
+}
+.desc{
+    margin-top: 25px;
+    color: #b18080;
+    font-weight: 600;
+}
+.img-fluid{
+    margin: 0px auto;
+    border-radius: 5%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+img{
+    vertical-align: middle;
+    border-style: none;
+}
+@media(min-width:768px){
+    .servers{
+        padding: 0 15%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+    }
+    .display{
+        display: none;
+    }
+    .server_m{
+        display: unset;
+        width: 150px;
+        margin: 0 20px;
+        background-color: #0A0A0A;
+        max-width: 200px;
+        padding: 0 10px 15px 10px;
+        border-radius: 15px;
+        box-shadow: 3px 3px 8px #00000088;
+        margin-bottom: 35px;
+    }
+    .server{
+        width: auto;
+        margin: auto;
+        background-color: #00000000;
+        padding: auto;
+        border-radius: 0px;
+        box-shadow: 0px 0px 0px #00000000;
+    }
+    .mod{
+        max-height: 450px;
+        flex: 0 0 50%;
+        max-width: 100%;
+    }
+    .img-fluid{max-width: 100%;}
+    .i1{max-width: 575px; margin-top: 40px;}
+    .i2{max-width: 575px; margin-left: 0px;}
+    .desc{margin-left: unset;margin-right: unset;text-align: unset;}
+    .heading{text-align: unset;}
+    .one{order: 0;}
+    .two{order: 1;}
+    .three{order: 2;}
+    .four{order: 3;}
+    .five{order: 4;}
+    .six{order: 5;}
+    .seven{order: 6;}
+}
+@media(max-width:768px){
+    .servers{
+        justify-content: center;
+        text-align: center;
+        display: unset;
+    }
+    .server_m{
+        padding: 0 15%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: auto;
+        margin: auto;
+        background-color: #00000000;
+        border-radius: 0px;
+        box-shadow: 0px 0px 0px #00000000;
+    }
+    .display{
+        display: unset;
+    }
+    .server{
+        width: 150px;
+        margin: 0 20px;
+        background-color: #0A0A0A;
+        max-width: 200px;
+        padding: 0 10px 15px 10px;
+        border-radius: 15px;
+        box-shadow: 3px 3px 8px #00000088;
+    }
+    .row, .row *{
+        align-items: center;
+    }
+    .mod{flex:unset;}
+    .img-fluid{max-width: 103vw; margin: 0px;}
+    .desc{margin-left: 10px;margin-right: 10px;text-align: center;}
+    .heading{text-align: center;}
+    .one{order: unset;}
+    .two{order: unset;}
+    .three{order: unset;}
+    .four{order: unset;}
+    .five{order: unset;}
+    .six{order: unset;}
+    .seven{order: unset;}
+    .fs120{font-size: 120%;}
+    .fs100{font-size: 100%;}
+}
+.hs{text-align: center;}
+.name{
+    height: 50px;
+    font-size: 80%;
+    font-weight: 500;
+    font-family: NeonDL;
+}
+.ip{
+    font-size: 50%;
+    font-weight: 400;
+    background-color: #18202b;
+    padding: 5px 0;
+    border-radius: 10px;
+    font-family: Nickainley;
+}
+.online{
+    font-size: 50%;
+    position: relative;
+    background-color: #18202b;
+    padding: 4px 4px;
+    border-radius: 10px;
+}
+.span{
+    font-weight: 500;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+.hr{
+    background: linear-gradient(90deg,#c93232,#e95454);
+    display: block;
+    border-radius: 7px;
+}
+br{
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.scroll-indicator{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 43px;
+    height: 2em;
+    bottom: 0;
+    pointer-events: none;
+    font-size: 2em !important;
+    color:red;
+    -webkit-animation: rotateX 7s ease-in-out infinite;
+    animation: rotateX 7s ease-in-out infinite;
+}
+
+@-webkit-keyframes rotateX{
+    from{transform: translateX(0) translateY(0)}
+    50%{transform: translateX(5%) translateY(20%)}
+    100%{transform: translateX(0) translateY(0)}
+}
+@keyframes rotateX{
+    from{transform: translateX(0) translateY(0)}
+    50%{transform: translateX(5%) translateY(20%)}
+    100%{transform: translateX(0) translateY(0)}
+}
